@@ -4,7 +4,21 @@
 .bg-green {
     background-color: #b4d784;
 }
+.text-pink {
+    color: #e64398;
+}
+
+.text-green {
+    color: #b4d784;
+}
 .container-fluid {
     margin: 0;
     padding: 0;
+}
+
+.center-text {
+    text-align: center;
+}
+* {
+    /*    font-family: Railway-thin, serif;*/
 }
