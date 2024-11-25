@@ -6,7 +6,7 @@
   <!-- Parallax Row -->
   <div class="parallax-row text-center">
 
-    <div class='row' style='height:400px'>
+    <div class='row pt-5' style='height:400px'>
       <div class='col-2'></div>
       <Location
         locationName="Gold Coast Storefront"
