@@ -1,4 +1,1 @@
-<h1>BIGTEXT</h1><h1>BIGTEXT</h1><h1>BIGTEXT</h1><h1>BIGTEXT</h1>
-<h1>BIGTEXT</h1>
-<h1>BIGTEXT</h1>
 <h1>BIGTEXT</h1>

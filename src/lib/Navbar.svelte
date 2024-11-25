@@ -1,0 +1,66 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand" href="/">
+      <img src="/images/crf-logo.svg" alt="Logo" style="height: 50px;" />
+    </a>
+
+    <!-- Toggler for mobile view -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link text-lowercase" href="/">home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-lowercase" href="/menu">menu</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-lowercase" href="/shop">shop retail</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-lowercase" href="/weekly-takeaway">weekly takeaway</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-lowercase" href="/about">about</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-lowercase" href="/gallery">gallery</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-lowercase" href="/gift">gift</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-lowercase" href="/connect">connect</a>
+        </li>
+      </ul>
+
+      <!-- Cart Icon -->
+      <a href="/cart" class="nav-link ms-lg-3">
+        <svg
+          class="bi bi-cart"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="currentColor"
+          viewBox="0 0 16 16"
+        >
+          <path d="M0 1a1 1 0 0 1 1-1h1.11a1 1 0 0 1 .96.72L2.89 3H15.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 14 12H4a.5.5 0 0 1-.491-.408L1.01 3.607 0 1zm3.89 3l1.2 6H13.5l1.2-6H3.89zM5.5 12a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0zm5 0a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</nav>
