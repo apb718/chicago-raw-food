@@ -6,7 +6,7 @@
     export let endTime=""
 </script>
 
-<div class="col-3 bg-green rounded d-flex align-items-center justify-content-center p-4">
+<div class="col-xl-3 bg-green rounded d-flex align-items-center justify-content-center p-4">
     <div>
         <h4>{locationName}</h4>
         <p>{address}</p>

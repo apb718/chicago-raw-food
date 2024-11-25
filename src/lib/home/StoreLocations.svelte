@@ -4,10 +4,10 @@
 
 <div class="container-fluid">
   <!-- Parallax Row -->
-  <div class="parallax-row text-center">
+  <div class="parallax-row text-center" style='height:50vh'>
 
-    <div class='row pt-5' style='height:400px'>
-      <div class='col-2'></div>
+    <div class='row p-5' style='height:500px'>
+      <div class='col-xl-2'></div>
       <Location
         locationName="Gold Coast Storefront"
         address="51 W Huron St, Chicago, IL 60654"
@@ -16,7 +16,7 @@
         endTime= "8:00pm"
       />
 
-      <div class='col-2'></div>
+      <div class='col-xl-2'></div>
       <Location
         locationName="Raw Kitchen"
         address="325 N Hoyne Ave, Unit #323, Chicago, IL 60612"
@@ -24,7 +24,7 @@
         startTime = "6:30am"
         endTime= "1:30pm"
       />
-      <div class='col-3'></div>
+      <div class='col-xl-3'></div>
     </div>
 
   </div>
@@ -37,7 +37,7 @@
     background-image: url("/images/storefront/storefront1.jpg");
 
     /* Set a specific height */
-    min-height: 400px;
+    min-height: 500px;
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;

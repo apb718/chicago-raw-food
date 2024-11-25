@@ -12,8 +12,8 @@
           <!--</figcaption>-->
         </figure>
     </div>
-    <div class='row' id='bullets'>
-        <div class='col-2'></div>
+    <div class='row pb-3' id='bullets'>
+        <div class='col-lg-2'></div>
         <Bullet
             text='vegan meals, salads, desserts, snacks, and spreads'
         />
