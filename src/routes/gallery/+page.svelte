@@ -1,1 +1,3 @@
-<h1>This is the gallery</h1>
+<head>
+    <title>Gallery</title>
+</head>

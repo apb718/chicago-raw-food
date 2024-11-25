@@ -22,11 +22,12 @@
   </div>
 </div>
 
-<div class='container-fluid bg-danger'>
+<div class='container-fluid m-0 p-0'>
   <slot />
 </div>
 
 
 <!-- ADD HEIGHT TO PAGE -->
 <div style='height: 75vh;'></div>
+
 <Footer />

@@ -1,6 +1,10 @@
 .bg-pink {
-    background-color: hotpink;
+    background-color: #e64398;
 }
 .bg-green {
-    background-color: limegreen;
+    background-color: #b4d784;
+}
+.container-fluid {
+    margin: 0;
+    padding: 0;
 }

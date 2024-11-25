@@ -1,1 +1,3 @@
-<h1>This is the takeaway</h1>
+<head>
+    <title>Takeaway</title>
+</head>

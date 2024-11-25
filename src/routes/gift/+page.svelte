@@ -1,1 +1,3 @@
-<h1>This is the retail</h1>
+<head>
+    <title>Gift</title>
+</head>

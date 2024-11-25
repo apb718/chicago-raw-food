@@ -1,1 +1,3 @@
-<h1>This is the connect</h1>
+<head>
+    <title>Connect</title>
+</head>
