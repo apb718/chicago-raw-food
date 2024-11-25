@@ -1,9 +1,9 @@
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+<nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
   <div class="container">
     <!-- Logo -->
     <a class="navbar-brand" href="/">
-      <img src="/images/crf-logo.svg" alt="Logo" style="height: 50px;" />
+      <img src="/images/crf-logo.svg" alt="Logo" style="height: 100px;" />
     </a>
 
     <!-- Toggler for mobile view -->
@@ -50,15 +50,8 @@
 
       <!-- Cart Icon -->
       <a href="/cart" class="nav-link ms-lg-3">
-        <svg
-          class="bi bi-cart"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          fill="currentColor"
-          viewBox="0 0 16 16"
-        >
-          <path d="M0 1a1 1 0 0 1 1-1h1.11a1 1 0 0 1 .96.72L2.89 3H15.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 14 12H4a.5.5 0 0 1-.491-.408L1.01 3.607 0 1zm3.89 3l1.2 6H13.5l1.2-6H3.89zM5.5 12a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0zm5 0a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z" />
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+          <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
         </svg>
       </a>
     </div>
