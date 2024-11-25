@@ -60,5 +60,9 @@
   .footer-color {
     background-color: lightgrey;
   }
+  * {
+    font-size: medium;
+    font-family: railway-thin, serif;
+  }
 
 </style>
