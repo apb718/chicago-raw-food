@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
   <div class="container">
     <!-- Logo -->
@@ -21,6 +20,7 @@
 
     <!-- Navbar Links -->
     <div class="collapse navbar-collapse" id="navbarNav">
+      <!-- Add ms-auto to move the list items to the right -->
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
           <a class="nav-link text-lowercase" href="/">home</a>

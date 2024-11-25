@@ -1,6 +1,6 @@
-<footer class="bg-light text-dark pt-5 pb-3">
-  <div class="container">
-    <div class="row">
+<footer class="text-light ">
+  <div class="container-fluid footer-color pt-3">
+    <div class="row px-5">
       <!-- Column 1: Locations -->
       <div class="col-md-4">
         <h5 class="fw-bold">OUR LOCATIONS</h5>
@@ -18,36 +18,47 @@
       <div class="col-md-4">
         <h5 class="fw-bold">QUICK LINKS</h5>
         <ul class="list-unstyled">
-          <li><a href="/" class="text-decoration-none text-dark">Home</a></li>
-          <li><a href="/menu" class="text-decoration-none text-dark">Menu</a></li>
-          <li><a href="/about" class="text-decoration-none text-dark">About</a></li>
-          <li><a href="/weekly-takeaway" class="text-decoration-none text-dark">Weekly Takeaway</a></li>
-          <li><a href="/menu-gallery" class="text-decoration-none text-dark">Menu Gallery</a></li>
-          <li><a href="/online-shop" class="text-decoration-none text-dark">Online Shop</a></li>
-          <li><a href="/contact" class="text-decoration-none text-dark">Contact</a></li>
+          <li><a href="/" class="text-decoration-none text-light">Home</a></li>
+          <li><a href="/menu" class="text-decoration-none text-light">Menu</a></li>
+          <li><a href="/about" class="text-decoration-none text-light">About</a></li>
+          <li><a href="/weekly-takeaway" class="text-decoration-none text-light">Weekly Takeaway</a></li>
+          <li><a href="/menu-gallery" class="text-decoration-none text-light">Menu Gallery</a></li>
+          <li><a href="/online-shop" class="text-decoration-none text-light">Online Shop</a></li>
+          <li><a href="/contact" class="text-decoration-none text-light">Contact</a></li>
         </ul>
       </div>
 
       <!-- Column 3: Social Links -->
       <div class="col-md-4 text-center">
         <h5 class="fw-bold">FOLLOW US</h5>
-        <a href="https://instagram.com" target="_blank" class="text-dark me-3">
+        <a href="https://instagram.com" target="_blank" class="text-light me-3">
           <i class="bi bi-instagram fs-4"></i>
         </a>
-        <a href="https://facebook.com" target="_blank" class="text-dark me-3">
+        <a href="https://facebook.com" target="_blank" class="text-light me-3">
           <i class="bi bi-facebook fs-4"></i>
         </a>
-        <a href="https://twitter.com" target="_blank" class="text-dark">
+        <a href="https://twitter.com" target="_blank" class="text-light">
           <i class="bi bi-twitter fs-4"></i>
         </a>
       </div>
     </div>
 
     <!-- Footer Bottom Row -->
-    <div class="row mt-4">
+    <div class="row mt-4 footer-second-color py-3">
       <div class="col text-center">
         <p class="mb-0">&copy; 2024 Chicago Raw Food All Rights Reserved.</p>
       </div>
     </div>
   </div>
 </footer>
+
+
+<style>
+  .footer-second-color {
+    background-color: darkgrey;
+  }
+  .footer-color {
+    background-color: lightgrey;
+  }
+
+</style>

@@ -12,13 +12,21 @@
   }
 </script>
 
-<div class="container">
-  <div class='col-md-10'>
-    <Navbar />
+<div class="container-fluid w-100">
+  <div class='row'>
+    <div class='col-md-1'></div>
+    <div class='col-md-10'>
+      <Navbar />
+    </div>
+    <div class='col-md-1'></div>
   </div>
-  <slot />
-
-  <!-- ADD HEIGHT TO PAGE -->
-  <div style='height: 75vh;'></div>
 </div>
+
+<div class='container-fluid bg-danger'>
+  <slot />
+</div>
+
+
+<!-- ADD HEIGHT TO PAGE -->
+<div style='height: 75vh;'></div>
 <Footer />
