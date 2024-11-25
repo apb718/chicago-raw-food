@@ -18,7 +18,7 @@
                 imageSrc="/images/carousel/main-menu/img1.jpg"
                 altText="First slide"
                 captionText="prepared fresh daily & packaged to go"
-                isActive=true
+                isActive={true}
               />
               <CarouselItem
                 imageSrc="/images/carousel/main-menu/img2.jpg"
