@@ -15,18 +15,18 @@
             <!-- Carousel Inner -->
             <div class="carousel-inner" style='height: 40vh'>
               <CarouselItem
-                imageSrc="/images/carousel/main-menu/img1.jpg"
+                imageSrc="/images/main-menu/carousel/img1.jpg"
                 altText="First slide"
                 captionText="prepared fresh daily & packaged to go"
                 isActive={true}
               />
               <CarouselItem
-                imageSrc="/images/carousel/main-menu/img2.jpg"
+                imageSrc="/images/main-menu/carousel/img2.jpg"
                 altText="Second slide"
                 captionText="eat living foods to energize your life"
               />
               <CarouselItem
-                imageSrc="/images/carousel/main-menu/img3.jpg"
+                imageSrc="/images//main-menu/carousel/img3.jpg"
                 altText="Third slide"
                 captionText="celebrate the power of plants"
               />
