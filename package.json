@@ -45,6 +45,8 @@
 		"@sveltestrap/sveltestrap": "^6.2.7",
 		"bootstrap": "^5.3.3",
 		"bootstrap-icons": "^1.11.3",
-		"flowbite-svelte": "^0.47.3"
+		"dotenv": "^16.4.5",
+		"flowbite-svelte": "^0.47.3",
+		"mysql2": "^3.11.4"
 	}
 }
