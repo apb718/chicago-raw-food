@@ -4,6 +4,7 @@
   import OrderApps from "$lib/home/OrderApps.svelte";
   import BulletRow from "$lib/home/BulletRow.svelte";
   import StoreLocations from "$lib/home/StoreLocations.svelte";
+  import OtherOptions from "$lib/home/OtherOptions.svelte";
 </script>
 <head>
   <title>Home</title>
@@ -14,3 +15,4 @@
 <OrderApps />
 <BulletRow />
 <StoreLocations />
+<OtherOptions />
