@@ -31,13 +31,13 @@
       <!-- Column 3: Social Links -->
       <div class="col-md-4 text-center">
         <h5 class="fw-bold">FOLLOW US</h5>
-        <a href="https://instagram.com" target="_blank" class="text-light me-3">
+        <a href="https://instagram.com" target="_blank" class="text-light me-3" aria-label='Instagram'>
           <i class="bi bi-instagram fs-4"></i>
         </a>
-        <a href="https://facebook.com" target="_blank" class="text-light me-3">
+        <a href="https://facebook.com" target="_blank" class="text-light me-3" aria-label='Facebook'> 
           <i class="bi bi-facebook fs-4"></i>
         </a>
-        <a href="https://twitter.com" target="_blank" class="text-light">
+        <a href="https://twitter.com" target="_blank" class="text-light" aria-label='Twitter'>
           <i class="bi bi-twitter fs-4"></i>
         </a>
       </div>
@@ -59,6 +59,10 @@
   }
   .footer-color {
     background-color: lightgrey;
+  }
+  * {
+    font-size: medium;
+    font-family: railway-thin, serif;
   }
 
 </style>

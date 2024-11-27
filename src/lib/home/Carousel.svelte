@@ -1,8 +1,9 @@
 <script>
   import CarouselItem from './CarouselItem.svelte';
+  export let height = "50vh"
 </script>
 
-<div class='row'>
+<div class='row' style='height: {height}'>
   <div class='col-lg-12'>
         <div id="imageCarousel" class="carousel slide w-100" data-bs-ride="carousel">
             <!-- Carousel Indicators -->
@@ -13,7 +14,7 @@
             </div>
 
             <!-- Carousel Inner -->
-            <div class="carousel-inner" style='height: 40vh'>
+            <div class="carousel-inner" style='height: {height}'>
               <CarouselItem
                 imageSrc="/images/main-menu/carousel/img1.jpg"
                 altText="First slide"
