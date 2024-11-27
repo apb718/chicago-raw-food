@@ -1,8 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+<nav class="navbar navbar-expand-lg navbar-light bg-white py-1">
   <div class="container">
     <!-- Logo -->
     <a class="navbar-brand" href="/">
-      <img src="/images/crf-logo.svg" alt="Logo" style="height: 100px;" />
+      <img src="/images/crf-logo.svg" alt="Logo" style="height: 125px" />
     </a>
 
     <!-- Toggler for mobile view -->
@@ -41,7 +41,7 @@
           <a class="nav-link text-lowercase" href="/gallery">gallery</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-lowercase" href="/gift">gift</a>
+          <a class="nav-link text-lowercase" target='_blank' href="https://squareup.com/gift/17A1XAYRBCGV7/order">gift</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-lowercase" href="/connect">connect</a>
