@@ -4,6 +4,7 @@
   import MargoBanner from "$lib/about/MargoBanner.svelte";
   import PollyBanner from "$lib/about/PollyBanner.svelte";
   import WhatIsRaw from "$lib/about/WhatIsRaw.svelte";
+  import OurMission from "$lib/about/OurMission.svelte";
 </script>
 <head>
   <title>About Us</title>
@@ -14,3 +15,4 @@
 <PollyBanner />
 <WhatIsRaw />
 <MargoBanner />
+<OurMission />
