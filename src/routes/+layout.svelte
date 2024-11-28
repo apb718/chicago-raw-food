@@ -27,7 +27,5 @@
 </div>
 
 
-<!-- ADD HEIGHT TO PAGE -->
-<!--<div style='height: 75vh;'></div>-->
 
 <Footer />
