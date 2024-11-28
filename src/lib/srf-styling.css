@@ -36,7 +36,15 @@
     padding: 20px;
     /*    background-color: lightgray;*/
 }
-  
+
+.text-gray {
+    color: #606060;
+}
+
+.raleway {
+    font-family: 'Raleway', serif;
+}
+
 * {
     /*    font-family: Railway-thin, serif;*/
 }
