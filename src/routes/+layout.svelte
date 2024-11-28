@@ -22,7 +22,7 @@
   </div>
 </div>
 
-<div class='container-fluid m-0 p-0 flex-column' style='min-height:45vh'>
+<div class='container-fluid m-0 p-0 flex-column' style='min-height:80vh'>
   <slot />
 </div>
 
