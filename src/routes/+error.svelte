@@ -30,5 +30,5 @@
   .inner {
     padding: 20px;
 /*    background-color: lightgray;*/
-  }]\
+  }
 </style>
