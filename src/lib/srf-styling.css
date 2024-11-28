@@ -7,6 +7,10 @@
 .text-pink {
     color: #e64398;
 }
+.text-strong-pink {
+    color: #e64398;
+    font-weight: bold;
+}
 
 .text-green {
     color: #b4d784;
@@ -19,6 +23,20 @@
 .center-text {
     text-align: center;
 }
+
+.outer {
+    display: flex;
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
+    height: 300px; /* Set a height for the outer div */
+    /*    border: 1px solid black; !* For visualization *!*/
+}
+
+.inner {
+    padding: 20px;
+    /*    background-color: lightgray;*/
+}
+  
 * {
     /*    font-family: Railway-thin, serif;*/
 }

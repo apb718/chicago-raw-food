@@ -12,7 +12,7 @@
   }
 </script>
 
-<div class="container-fluid w-100">
+<div class="container-fluid">
   <div class='row'>
     <div class='col-md-1'></div>
     <div class='col-md-10'>
@@ -22,7 +22,7 @@
   </div>
 </div>
 
-<div class='container-fluid m-0 p-0'>
+<div class='container-fluid m-0 p-0 flex-column' style='min-height:45vh'>
   <slot />
 </div>
 
