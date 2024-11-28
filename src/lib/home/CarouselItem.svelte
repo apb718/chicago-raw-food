@@ -8,8 +8,8 @@
 
 <div class="carousel-item {isActive ? 'active' : ''}">
   <img src={imageSrc} class="d-block w-100" alt={altText}>
-  <div class="carousel-caption d-none d-md-block">
-    <h5 class="text-light">{captionText}</h5>
+  <div class="carousel-caption d-none d-md-block outer">
+    <h5 class="text-light inner">{captionText}</h5>
   </div>
 </div>
 
@@ -30,8 +30,8 @@
   }
 
   .carousel-caption h5 {
-    font-size: 1.5rem; /* Adjust font size as needed */
+    font-size: 2rem; /* Adjust font size as needed */
     color: white; /* Make sure text is visible */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional shadow for readability */
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); /* Optional shadow for readability */
   }
 </style>

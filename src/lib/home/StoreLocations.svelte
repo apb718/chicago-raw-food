@@ -4,10 +4,10 @@
 
 <div class="container-fluid">
   <!-- Parallax Row -->
-  <div class="parallax-row text-center" style='height:50vh'>
+  <div class="parallax-row text-center" style='height:60vh outer'>
 
-    <div class='row p-5' style='height:500px'>
-      <div class='col-xl-2'></div>
+    <div class='row mt-3 p-5 inner' style='height:500px'>
+      <div class='col-xl-2 outer'></div>
       <Location
         locationName="Gold Coast Storefront"
         address="51 W Huron St, Chicago, IL 60654"
@@ -16,7 +16,7 @@
         endTime= "8:00pm"
       />
 
-      <div class='col-xl-2'></div>
+      <div class='col-xl-2 outer'></div>
       <Location
         locationName="Raw Kitchen"
         address="325 N Hoyne Ave, Unit #323, Chicago, IL 60612"
