@@ -52,6 +52,7 @@
 		"dotenv": "^16.4.5",
 		"flowbite-svelte": "^0.47.3",
 		"jsonwebtoken": "^9.0.2",
-		"mysql2": "^3.11.4"
+		"mysql2": "^3.11.4",
+		"redis": "^4.7.0"
 	}
 }

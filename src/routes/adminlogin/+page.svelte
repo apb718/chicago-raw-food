@@ -11,7 +11,9 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password })
             });
-            console.log('Login');
+            // console.log('Login');
+
+
             if (!response.ok) {
                 const { error } = await response.json();
                 throw new Error(error);
