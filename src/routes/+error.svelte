@@ -1,10 +1,5 @@
 <script>
-  import '$lib/srf-styling.css'
-  import FoodCarousel from '$lib/home/Carousel.svelte'
-  import OrderApps from "$lib/home/OrderApps.svelte";
-  import BulletRow from "$lib/home/BulletRow.svelte";
-  import StoreLocations from "$lib/home/StoreLocations.svelte";
-  import OtherOptions from "$lib/home/OtherOptions.svelte";
+    import '$lib/srf-styling.css';
 </script>
 
 <div class='row mb-5 outer'>

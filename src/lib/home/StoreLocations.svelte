@@ -4,9 +4,9 @@
 
 <div class="container-fluid">
   <!-- Parallax Row -->
-  <div class="parallax-row text-center" style='height:60vh outer'>
+  <div class="parallax-row text-center inner" >
 
-    <div class='row mt-3 p-5 inner' style='height:500px'>
+    <div class='row mt-3 p-5 inner' id='containeRow' >
       <div class='col-xl-2 outer'></div>
       <Location
         locationName="Gold Coast Storefront"
@@ -16,7 +16,7 @@
         endTime= "8:00pm"
       />
 
-      <div class='col-xl-2 outer'></div>
+      <div class='col-lg-2 outer'></div>
       <Location
         locationName="Raw Kitchen"
         address="325 N Hoyne Ave, Unit #323, Chicago, IL 60612"
@@ -49,4 +49,20 @@
     z-index: 1;
     overflow: hidden;
   }
+
+/*  @media (max-width: 768px) {*/
+/*    .parallax-row {*/
+/*      background-image: url("/images/storefront/storefront1.jpg");*/
+/*      min-height: 60vh; !* Flexible height *!*/
+/*      background-attachment: fixed;*/
+/*      background-position: center;*/
+/*      background-repeat: no-repeat;*/
+/*      background-size: cover;*/
+/*      position: relative;*/
+/*      z-index: 1;*/
+/*      background-attachment: scroll; !* Fallback for mobile *!*/
+/*      background-position: center top; !* Adjust position *!*/
+/*    }*/
+/*  }*/
+
 </style>

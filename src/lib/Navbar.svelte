@@ -2,7 +2,7 @@
   <div class="container">
     <!-- Logo -->
     <a class="navbar-brand" href="/">
-      <img src="/images/crf-logo.svg" alt="Logo" style="height: 125px" />
+      <img src="/images/branding/crf-logo.svg" alt="Logo" style="height: 125px" />
     </a>
 
     <!-- Toggler for mobile view -->
@@ -32,7 +32,7 @@
           <a class="nav-link text-lowercase" href="/shop">shop retail</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-lowercase" href="/weekly-takeaway">weekly takeaway</a>
+          <a class="nav-link text-lowercase" href="/takeaway">weekly takeaway</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-lowercase" href="/about">about</a>
