@@ -35,6 +35,7 @@
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/package": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0",
+		"@types/bootstrap": "^5.2.10",
 		"publint": "^0.2.0",
 		"svelte": "^5.2.7",
 		"svelte-check": "^4.0.0",

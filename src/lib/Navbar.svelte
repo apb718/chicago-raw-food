@@ -2,7 +2,7 @@
   <div class="container">
     <!-- Logo -->
     <a class="navbar-brand" href="/">
-      <img src="/images/crf-logo.svg" alt="Logo" style="height: 125px" />
+      <img src="/images/branding/crf-logo.svg" alt="Logo" style="height: 125px" />
     </a>
 
     <!-- Toggler for mobile view -->

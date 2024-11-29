@@ -1,6 +1,5 @@
 <script>
-  import { browser } from '$app/environment'; // Detect if running in the browser
-
+  import {browser} from '$app/environment'; // Detect if running in the browser
   import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
   import 'bootstrap-icons/font/bootstrap-icons.css'
   import Navbar from '$lib/Navbar.svelte';
@@ -8,6 +7,7 @@
 
   // Dynamically import Bootstrap JavaScript only in the browser
   if (browser) {
+    // @ts-ignore
     import('bootstrap/dist/js/bootstrap.bundle.js');
   }
 </script>
