@@ -35,7 +35,7 @@
             </div>
         </div>
         <!--Pin Icon-->
-        <i class='bi bi-pin-map fs-3 center-text'></i>
+        <i class='fas fa-utensils fs-3 center-text text-gray'></i>
     </div>
 
 

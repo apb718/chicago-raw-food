@@ -2,6 +2,7 @@
     import TakeawayBanner from "$lib/takeaway/TakeawayBanner.svelte";
     import TakeawayExplanation from "$lib/takeaway/TakeawayExplanation.svelte";
     import HowItWorks from "$lib/takeaway/HowItWorks.svelte";
+    import OrderNow from "$lib/takeaway/OrderNow.svelte";
 </script>
 
 
@@ -13,3 +14,4 @@
 <TakeawayBanner />
 <TakeawayExplanation />
 <HowItWorks />
+<OrderNow />

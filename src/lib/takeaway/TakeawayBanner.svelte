@@ -1,7 +1,7 @@
 <div class='row' >
     <div class="image-container">
         <img src="/images/takeaway/TakeawayBanner2.jpg" alt="Takeaway food banner" />
-        <div class="centered-text">Weekly Takeaway</div>
+<!--        <div class="centered-text">Weekly Takeaway</div>-->
     </div>
 </div>
 
