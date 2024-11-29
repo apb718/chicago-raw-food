@@ -1,32 +1,45 @@
-import type {RequestHandler} from './$types';
-import {query} from '$lib/db.js';
+// @ts-ignore
+import type { RequestHandler } from './$types';
+import { query } from '$lib/db.server.js';
 
-export const GET: RequestHandler = async ({url}: { url: URL }) => {
+export const GET: RequestHandler = async ({ url }: { url: URL }) => {
     // Extract 'table' query parameter
     const table = url.searchParams.get('table');
 
     if (!table) {
-        return new Response(JSON.stringify({error: 'Table parameter is required'}), {status: 400});
+        return new Response(
+            JSON.stringify({ error: 'Table parameter is required' }),
+            { status: 400, headers: { 'Content-Type': 'application/json' } }
+        );
     }
 
     try {
-        // Validate the table name (optional: to prevent SQL injection)
-        const validTables = ['user', 'sampleorders']; // Lowercase for comparison
+        // Map of valid table names to prevent SQL injection
+        const tableMap: Record<string, string> = {
+            user: 'USER',
+            sampleorders: 'SAMPLEORDERS',
+        };
 
-        if (validTables.at(0) == table.toLowerCase().trim()) {
-            console.log('derp');
-        }
-        if (!validTables.includes(table.trim().toLowerCase())) {
-            return new Response(JSON.stringify({error: 'Invalid table name'}), {status: 400});
+        const tableName = tableMap[table.toLowerCase().trim()];
+        if (!tableName) {
+            return new Response(
+                JSON.stringify({ error: 'Invalid table name' }),
+                { status: 400, headers: { 'Content-Type': 'application/json' } }
+            );
         }
 
         // Query the database
-        const results = await query(`SELECT *
-                                     FROM ${table.toUpperCase()}`, []); // Use parameterized queries
+        const results = await query(`SELECT * FROM ${tableName}`, []);
 
-        return new Response(JSON.stringify(results), {status: 200});
+        return new Response(JSON.stringify(results), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' },
+        });
     } catch (error) {
-        console.error(`1 ${error}`);
-        return new Response(JSON.stringify({error: 'Failed to fetch data'}), {status: 500});
+        console.error(`Error fetching data from table ${table}:`, error);
+        return new Response(
+            JSON.stringify({ error: 'Internal server error' }),
+            { status: 500, headers: { 'Content-Type': 'application/json' } }
+        );
     }
 };

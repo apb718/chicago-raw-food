@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".", // Sets the base directory for imports
+    "paths": {
+      "$lib/*": ["src/lib/*"], // Alias for the `src/lib` directory
+      "$routes/*": ["src/routes/*"] // Alias for the `src/routes` directory (optional)
+    }
+  },
+  "include": ["src"] // Ensures only the `src` folder is included in the project
+}

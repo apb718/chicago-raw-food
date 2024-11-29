@@ -1,8 +1,10 @@
 <script lang="ts">
+    import { onMount } from 'svelte';
+
     interface User {
         FirstName: string;
         LastName: string;
-        [key: string]: any; // Add this if there are additional unknown fields
+        [key: string]: any;
     }
 
     interface ErrorResponse {
@@ -11,27 +13,35 @@
 
     let data: User[] | null = null;
     let error: ErrorResponse | null = null;
+    let loading = true;
 
     async function fetchData(): Promise<void> {
+        loading = true;
         try {
             const response = await fetch('/api/data?table=User');
             if (response.ok) {
                 data = await response.json();
-                error = null; // Clear any previous errors
+                error = null;
             } else {
                 error = await response.json();
-                data = null; // Clear data if there's an error
+                data = null;
             }
         } catch (err) {
-            error = { error: 'Network error' };
-            data = null; // Clear data if there's an error
+            error = { error: `Network error: ${err.message}` };
+            data = null;
+        } finally {
+            loading = false;
         }
     }
 
-    fetchData();
+    onMount(() => {
+        fetchData();
+    });
 </script>
 
-{#if error}
+{#if loading}
+    <p>Loading...</p>
+{:else if error}
     <p>Error: {error.error}</p>
 {:else if data}
     <ul>
@@ -40,5 +50,5 @@
         {/each}
     </ul>
 {:else}
-    <p>Loading...</p>
+    <p>No data available.</p>
 {/if}
