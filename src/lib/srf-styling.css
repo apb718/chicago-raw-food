@@ -15,6 +15,12 @@
 .text-green {
     color: #b4d784;
 }
+
+.text-strong-green {
+    color: #b4d784;
+    font-weight: bold;
+}
+
 .container-fluid {
     margin: 0;
     padding: 0;

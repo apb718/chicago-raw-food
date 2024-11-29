@@ -32,7 +32,7 @@
           <a class="nav-link text-lowercase" href="/shop">shop retail</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-lowercase" href="/weekly-takeaway">weekly takeaway</a>
+          <a class="nav-link text-lowercase" href="/takeaway">weekly takeaway</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-lowercase" href="/about">about</a>
