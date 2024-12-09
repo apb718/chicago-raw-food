@@ -25,21 +25,21 @@
         object-fit: cover; /* Ensures the image aspect ratio is maintained */
     }
 
-    .centered-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: white; /* Adjust text color as needed */
-        font-size: 2rem; /* Adjust font size as needed */
-        font-weight: bold; /* Make text bold */
-        text-align: center;
-        text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); /* Optional shadow for readability */
+/*    .centered-text {*/
+/*        position: absolute;*/
+/*        top: 50%;*/
+/*        left: 50%;*/
+/*        transform: translate(-50%, -50%);*/
+/*        color: white; !* Adjust text color as needed *!*/
+/*        font-size: 2rem; !* Adjust font size as needed *!*/
+/*        font-weight: bold; !* Make text bold *!*/
+/*        text-align: center;*/
+/*        text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); !* Optional shadow for readability *!*/
 
-/*        background: rgba(0, 0, 0, 0.5); !* Optional background for better readability *!*/
-        padding: 10px; /* Optional padding around the text */
-        border-radius: 5px; /* Optional rounded corners */
-    }
+/*!*        background: rgba(0, 0, 0, 0.5); !* Optional background for better readability *!*!*/
+/*        padding: 10px; !* Optional padding around the text *!*/
+/*        border-radius: 5px; !* Optional rounded corners *!*/
+/*    }*/
 
 </style>
 

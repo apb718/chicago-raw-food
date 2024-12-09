@@ -9,13 +9,15 @@
     onMount(async () => {
         const response = await fetch("/api/v1/menu/products");
         menu = await response.json();
+        menu = menu[0];
+        console.log(menu);
         loading = false;
     });
 </script>
 
-<head>
-    <title>Menu</title>
-</head>
+<!--<head>-->
+<!--    <title>Menu</title>-->
+<!--</head>-->
 
 
 <MenuBanner />

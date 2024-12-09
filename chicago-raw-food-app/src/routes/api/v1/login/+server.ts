@@ -1,12 +1,11 @@
 import { json } from '@sveltejs/kit';
-import { query } from '$lib/server/dbConnection.js';
+import {pool} from '$lib/db/mysql.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import type {QueryResult} from "mysql2";
 import { createClient} from "redis";
 import {hashPassword} from "$lib/server/hashing.js";
-import redisClient from '$lib/redisClient';
-import { v4 as uuidv4 } from 'uuid';
+import redisClient from '$lib/redisClient.ts';
 
 
 const SECRET_KEY = process.env.JWT_SECRET;
@@ -30,7 +29,7 @@ export const POST = async ({ request }) => {
 
         // Fetch user from the database
         console.log('Querying database for user');
-        const results: QueryResult = await query(`SELECT UID, password_hash FROM auth WHERE email = ?`, [body.email]);
+        const results = await pool.query(`SELECT UID, password_hash FROM Auth WHERE email = ?`, [body.email]);
         console.log('Database results:', results);
 
 
