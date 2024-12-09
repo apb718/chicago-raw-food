@@ -5,10 +5,12 @@ import {pool} from "$lib/db/mysql.js";
  * @param UUID
  */
 export async function updateAuth(UUID: string): Promise<boolean> {
+
     const currentTime = new Date();
     currentTime.setDate(currentTime.getDate() + 1)
 
-    const currentTimePlusDay = new Date().toISOString().slice(0,19).replace('T', ' ');
+    const currentTimePlusDay = currentTime.toISOString().slice(0,19).replace('T', ' ');
+    console.log(currentTimePlusDay);
     try {
         const [result] = await pool.execute("UPDATE Auth " +
             "SET expiry_time = ? " +

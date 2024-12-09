@@ -6,6 +6,7 @@ export const POST = async ({ request, cookies }) => {
     // Retrieve the auth token from cookies
     const authToken = cookies.get('auth_token') ?? '';
     console.log(`ADD USER AUTH: ${authToken}`);
+    console.log(``)
     if (!authToken) {
         return json({ error: 'Unauthorized' }, { status: 401 });
     }
@@ -13,10 +14,10 @@ export const POST = async ({ request, cookies }) => {
     try {
         // Verify the auth token and check for admin level
         const [results]: any = await pool.query(
-            'SELECT admin FROM Auth WHERE UUID = ? AND expiry_time < NOW();',
+            'SELECT admin FROM Auth WHERE UUID = ? AND expiry_time > UTC_TIMESTAMP();',
             [authToken]
         );
-        console.log(results)
+
         if (results.length === 0 || results[0].admin !== 2) {
             return json({ error: 'Forbidden: Insufficient permissions' }, { status: 403 });
         }
@@ -26,6 +27,16 @@ export const POST = async ({ request, cookies }) => {
 
         if (!email || !password || admin === undefined) {
             return json({ error: 'Invalid Input' }, { status: 400 });
+        }
+
+        // Check if a user with this email already exists
+        const [emailCheck]: any = await pool.query(
+            'SELECT email FROM Auth WHERE email = ?',
+            [email]
+        );
+
+        if (emailCheck.length > 0) {
+            return json({ error: 'User already exists with this email' }, { status: 409 });
         }
 
         // Hash the user's password

@@ -53,7 +53,8 @@ export const POST = async ({ request, cookies}) => {
         const currentTime = new Date();
         currentTime.setDate(currentTime.getDate() + 1)
 
-        const currentTimePlusDay = new Date().toISOString().slice(0,19).replace('T', ' ');
+        const currentTimePlusDay = currentTime.toISOString().slice(0,19).replace('T', ' ');
+
         const [result] = await pool.execute("UPDATE Auth " +
             "SET UUID = ?, expiry_time = ? " +
             "WHERE email = ?",
