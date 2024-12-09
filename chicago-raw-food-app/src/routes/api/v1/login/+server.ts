@@ -1,12 +1,12 @@
 import { json } from '@sveltejs/kit';
-import { query } from '$lib/server/dbConnection.js';
+import { pool } from '$lib/db/mysql.js';
 import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
+import {v4 as uuidv4} from 'uuid';
+
 import type {QueryResult} from "mysql2";
 import { createClient} from "redis";
 import {hashPassword} from "$lib/server/hashing.js";
-import redisClient from '$lib/redisClient';
-import { v4 as uuidv4 } from 'uuid';
+
 
 
 const SECRET_KEY = process.env.JWT_SECRET;
@@ -16,13 +16,14 @@ if (!SECRET_KEY) {
 
 
 // @ts-ignore
-export const POST = async ({ request }) => {
+export const POST = async ({ request, cookies}) => {
     console.log('POST request received');
     // const { username, pasword } = await request.json();
     try {
         const body = await request.json();
         console.log('Request body:', body);
 
+        // handle missing field (should handle client side)
         if (!body.email || !body.password) {
             console.error('Missing email or password');
             return json({ error: 'Missing email or password' }, { status: 400 });
@@ -30,13 +31,13 @@ export const POST = async ({ request }) => {
 
         // Fetch user from the database
         console.log('Querying database for user');
-        const results: QueryResult = await query(`SELECT UID, password_hash FROM auth WHERE email = ?`, [body.email]);
-        console.log('Database results:', results);
+        const results = await pool.query(`SELECT UID, password_hash FROM Auth WHERE email = ?`, [body.email]);
+        // console.log('Database results:', results[0]);
 
 
 
         // @ts-ignore
-        const user = results[0];
+        const user = results[0][0];
         console.log('User found:', user);
 
         // Compare the provided password with the hashed password
@@ -48,19 +49,24 @@ export const POST = async ({ request }) => {
             return json({ error: 'Invalid email or password' }, { status: 400 });
         }
 
-        // Generate a JWT
-        console.log('Generating JWT');
-        const token = jwt.sign(
-            { id: user.id, email: body.email },
-            SECRET_KEY,
-            { expiresIn: '2h' }
-        );
-        console.log('JWT generated successfully');
+        const token: string = uuidv4();
+        const currentTime = new Date();
+        currentTime.setDate(currentTime.getDate() + 1)
 
-        // Store the token in Redis with a 2-hour expiration
-        await redisClient.set(token, JSON.stringify({ id: user.id, email: body.email }), {
-            EX: 7200, // Expire after 2 hours
+        const currentTimePlusDay = new Date().toISOString().slice(0,19).replace('T', ' ');
+        const [result] = await pool.execute("UPDATE Auth " +
+            "SET UUID = ?, expiry_time = ? " +
+            "WHERE email = ?",
+            [token, currentTimePlusDay, body.email])
+
+        cookies.set('auth_token', token, {
+            path: '/',
+            httpOnly: true,
+            secure: true,
+            sameSite: 'strict',
+            maxAge: 60*60*24,
         });
+
         return json({ message: 'Authentication successful', token }, { status: 200 });
     } catch (error) {
         console.error('Error during authentication:', error);

@@ -6,13 +6,12 @@
     async function login(): Promise<void> {
         error = null;
         try {
-            const response = await fetch('/api/login', {
+            const response = await fetch('/api/v1/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password })
             });
             // console.log('Login');
-
 
             if (!response.ok) {
                 const { error } = await response.json();
