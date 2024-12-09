@@ -17,7 +17,7 @@
                 const { error } = await response.json();
                 throw new Error(error);
             } else {
-                window.location.href = '/admin';
+                window.location.href = '/';
             }
 
         } catch (err) {
