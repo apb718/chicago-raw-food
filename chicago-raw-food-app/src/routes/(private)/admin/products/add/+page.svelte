@@ -1,4 +1,6 @@
 <script lang="ts">
+    // import { log } from '$lib/server/logUtils.ts'; // Ensure this is imported correctly
+
     let product_type_id: string = '';
     let product_name: string = '';
     let price: number | null = null;
@@ -30,7 +32,7 @@
 
         try {
             const response = await fetch('/api/v1/products/add', {
-                method: 'POST',
+                method: 'PUT', // Ensure this matches your API
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -45,14 +47,18 @@
             });
 
             if (response.ok) {
+                const result = await response.json();
+                // await log('INFO', 'Product added successfully', { product_name });
                 alert('Product added successfully!');
                 resetForm();
             } else {
                 const error = await response.json();
+                // await log('WARN', 'Failed to add product', error);
                 alert(`Error: ${error.message || 'Failed to add product'}`);
             }
         } catch (error) {
             console.error('Unexpected error:', error);
+            await log('ERROR', 'Unexpected error occurred while adding product', { error });
             alert('Unexpected error occurred.');
         }
     }

@@ -14,9 +14,9 @@
             pageAction={() => goto('/admin/addUser')}
     />
     <AdminLinkCard
-        title="View Products"
-        description="View Products"
-        actionText="Go to View Products"
+        title="Manage Products"
+        description="Manage Products"
+        actionText="Go to Products"
         pageAction={() => goto('/admin/products')}
     />
 </div>

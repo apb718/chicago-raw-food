@@ -116,7 +116,7 @@
                         <td>{product.product_id}</td>
                         <td>{getProductTypeDisplay(product.product_type_id)}</td>
                         <td>{product.product_name}</td>
-                        <td>${product.price}</td>
+                        <td>${parseFloat(product.price).toFixed(2)}</td>
                         <td>{product.description}</td>
                         <td>
                             {#if product.image_url}
