@@ -13,5 +13,11 @@
             actionText="Go to Add User"
             pageAction={() => goto('/admin/addUser')}
     />
+    <AdminLinkCard
+        title="View Products"
+        description="View Products"
+        actionText="Go to View Products"
+        pageAction={() => goto('/admin/products')}
+    />
 </div>
 <div class="col-xl-4"></div>

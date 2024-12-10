@@ -1,4 +1,4 @@
-import {json, redirect} from '@sveltejs/kit';
+import { json } from "@sveltejs/kit";
 import { pool } from '$lib/db/mysql.js';
 import bcrypt from 'bcrypt';
 import {v4 as uuidv4} from 'uuid';
@@ -9,10 +9,7 @@ import {hashPassword} from "$lib/server/hashing.js";
 
 
 
-const SECRET_KEY = process.env.JWT_SECRET;
-if (!SECRET_KEY) {
-    throw new Error('JWT_SECRET is not defined in environment variables');
-}
+
 
 
 // @ts-ignore
@@ -55,7 +52,7 @@ export const POST = async ({ request, cookies}) => {
 
         const currentTimePlusDay = currentTime.toISOString().slice(0,19).replace('T', ' ');
 
-        const [result] = await pool.execute("UPDATE Auth " +
+        const [result] = await pool.query("UPDATE Auth " +
             "SET UUID = ?, expiry_time = ? " +
             "WHERE email = ?",
             [token, currentTimePlusDay, body.email])
