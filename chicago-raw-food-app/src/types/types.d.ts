@@ -1,3 +1,6 @@
+// ./src/routes/$types.d.ts or ./types.d.ts
+
+// Declare bcrypt module
 declare module 'bcrypt' {
     export function hash(password: string | Buffer, saltOrRounds: string | number): Promise<string>;
     export function hashSync(password: string | Buffer, saltOrRounds: string | number): string;
@@ -7,6 +10,8 @@ declare module 'bcrypt' {
     export function genSaltSync(rounds?: number): string;
 }
 
+
+// Declare jsonwebtoken module
 declare module 'jsonwebtoken' {
     export function sign(
         payload: string | object | Buffer,
