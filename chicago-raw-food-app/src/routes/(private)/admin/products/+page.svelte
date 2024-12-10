@@ -5,6 +5,26 @@
     let products = [];
     let loading = true;
 
+    // Mapping product type ID to word representation
+    const productTypeMapping: Record<number, string> = {
+        1: "Minis",
+        2: "Hot Beverage",
+        3: "Juices",
+        4: "Elixir",
+        5: "Smoothie",
+        6: "Bowl",
+        7: "Entree",
+        8: "Sandwich",
+        9: "Salad",
+        10: "Bread",
+        11: "Spread",
+        12: "Dessert",
+        13: "Breakfast",
+        14: "Dehydrated",
+        15: "Dietary Restriction",
+        16: "cRc Kosher"
+    };
+
     // Fetch all products
     async function fetchProducts() {
         try {
@@ -55,6 +75,11 @@
     onMount(() => {
         fetchProducts();
     });
+
+    // Get the display value for the product type
+    function getProductTypeDisplay(typeId: number): string {
+        return `${typeId} - ${productTypeMapping[typeId] || 'Unknown'}`;
+    }
 </script>
 
 <div class="container mt-5">
@@ -89,7 +114,7 @@
                 {#each products as product}
                     <tr>
                         <td>{product.product_id}</td>
-                        <td>{product.product_type_id}</td>
+                        <td>{getProductTypeDisplay(product.product_type_id)}</td>
                         <td>{product.product_name}</td>
                         <td>${product.price}</td>
                         <td>{product.description}</td>

@@ -2,15 +2,16 @@ import { json } from '@sveltejs/kit';
 import { pool } from '$lib/db/mysql.js';
 import bcrypt from 'bcrypt';
 import { v4 as uuidv4 } from 'uuid';
+import { log } from '$lib/server/logUtils.js'; // Import the logger
 
 export const POST = async ({ request, cookies }) => {
-    console.log('POST request received');
+    await log('INFO', 'POST request received for login');
 
     try {
         // Parse request body
         const { email, password } = await request.json();
         if (!email || !password) {
-            console.error('Missing email or password');
+            await log('WARN', 'Missing email or password');
             return json({ error: 'Missing email or password' }, { status: 400 });
         }
 
@@ -21,17 +22,17 @@ export const POST = async ({ request, cookies }) => {
         );
 
         if (!results.length) {
-            console.error('User not found');
+            await log('WARN', `User not found for email: ${email}`);
             return json({ error: 'Invalid email or password' }, { status: 400 });
         }
 
         const user = results[0];
-        console.log('User found:', user);
+        await log('INFO', 'User found', { email, UID: user.UID });
 
         // Compare the provided password with the stored hash
         const isMatch = await bcrypt.compare(password, user.password_hash);
         if (!isMatch) {
-            console.error('Invalid email or password');
+            await log('WARN', 'Password mismatch for email', { email });
             return json({ error: 'Invalid email or password' }, { status: 400 });
         }
 
@@ -56,10 +57,10 @@ export const POST = async ({ request, cookies }) => {
             maxAge: 60 * 60 * 24, // 1 day
         });
 
-        console.log('Authentication successful');
+        await log('INFO', 'Authentication successful', { email, token });
         return json({ message: 'Authentication successful', token }, { status: 200 });
     } catch (error) {
-        console.error('Error during authentication:', error);
+        await log('ERROR', 'Error during authentication', { error });
         return json({ error: 'Internal server error' }, { status: 500 });
     }
 };

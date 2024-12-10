@@ -5,7 +5,7 @@
 
     let product: {
         product_id?: number;
-        product_type_id?: number;
+        product_type_id?: string;
         product_name?: string;
         price?: number;
         description?: string;
@@ -22,7 +22,9 @@
         try {
             const response = await fetch(`/api/v1/products/${productId}`);
             if (response.ok) {
-                product = await response.json();
+                const fetchedProduct = await response.json();
+                fetchedProduct.product_type_id = String(fetchedProduct.product_type_id); // Ensure it matches the option values
+                product = fetchedProduct;
             } else {
                 errorMessage = 'Failed to load product details.';
             }

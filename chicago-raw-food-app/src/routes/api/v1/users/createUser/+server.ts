@@ -1,13 +1,14 @@
 import { json } from '@sveltejs/kit';
 import { pool } from '$lib/db/mysql.js';
 import { hashPassword } from '$lib/server/hashing.js';
+import { log } from '$lib/server/logUtils.js';
 
 export const POST = async ({ request, cookies }) => {
-    // Retrieve the auth token from cookies
     const authToken = cookies.get('auth_token') ?? '';
-    console.log(`ADD USER AUTH: ${authToken}`);
-    console.log(``)
+    await log('INFO', 'Attempting to add user', { authToken });
+
     if (!authToken) {
+        await log('WARN', 'Unauthorized request: Missing auth token');
         return json({ error: 'Unauthorized' }, { status: 401 });
     }
 
@@ -19,6 +20,7 @@ export const POST = async ({ request, cookies }) => {
         );
 
         if (results.length === 0 || results[0].admin !== 2) {
+            await log('WARN', 'Insufficient permissions or invalid auth token', { authToken });
             return json({ error: 'Forbidden: Insufficient permissions' }, { status: 403 });
         }
 
@@ -26,6 +28,7 @@ export const POST = async ({ request, cookies }) => {
         const { email, password, admin } = await request.json();
 
         if (!email || !password || admin === undefined) {
+            await log('WARN', 'Invalid input data', { email, admin });
             return json({ error: 'Invalid Input' }, { status: 400 });
         }
 
@@ -36,6 +39,7 @@ export const POST = async ({ request, cookies }) => {
         );
 
         if (emailCheck.length > 0) {
+            await log('WARN', 'User already exists', { email });
             return json({ error: 'User already exists with this email' }, { status: 409 });
         }
 
@@ -48,9 +52,10 @@ export const POST = async ({ request, cookies }) => {
             [email, password_hash, admin]
         );
 
+        await log('INFO', 'User added successfully', { email, userId: insertResult.insertId });
         return json({ success: true, userId: insertResult.insertId }, { status: 201 });
     } catch (error) {
-        console.error('Error processing request:', error);
+        await log('ERROR', 'Error processing user creation', { error });
         return json({ error: 'Internal server error' }, { status: 500 });
     }
 };
