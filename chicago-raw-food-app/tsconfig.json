@@ -13,6 +13,10 @@
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
 		"skipDefaultLibCheck": true,
-		"allowImportingTsExtensions": true
+		"allowImportingTsExtensions": true,
+		"isolatedModules": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"importsNotUsedAsValues": "error"
 	}
 }
