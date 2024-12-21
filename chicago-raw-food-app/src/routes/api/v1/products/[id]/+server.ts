@@ -3,6 +3,7 @@ import { pool } from '$lib/db/mysql.js';
 import { verifyAdminLevel } from '$lib/server/authUtils.js';
 import { log } from '$lib/server/logUtils.js';
 
+// @ts-ignore
 export const GET = async ({ params }) => {
     const productId = params.id;
 
@@ -30,6 +31,7 @@ export const GET = async ({ params }) => {
     }
 };
 
+// @ts-ignore
 export const PUT = async ({ cookies, params, request }) => {
     const user = await verifyAdminLevel(cookies, 2, { throwOnFail: false, returnUser: true});
 
