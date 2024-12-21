@@ -1,0 +1,17 @@
+.contact-page h2 {
+    color: #6D604E;
+}
+
+.contact-page .form-control:focus {
+    border-color: #6D604E;
+    box-shadow: 0 0 0 0.2rem rgba(109, 96, 78, 0.25);
+}
+
+.contact-page .btn-primary:hover {
+    background-color: #5C5341;
+}
+
+.list-group-item {
+    background-color: #FAFAF8;
+    color: #6D604E;
+}
