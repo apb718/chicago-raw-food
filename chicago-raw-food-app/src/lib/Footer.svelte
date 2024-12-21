@@ -1,5 +1,5 @@
-<footer class="text-light ">
-  <div class="container-fluid footer-color pt-3">
+<footer class="text-light">
+  <div class="container-fluid footer-color pt-5">
     <div class="row px-5">
       <!-- Column 1: Locations -->
       <div class="col-md-4">
