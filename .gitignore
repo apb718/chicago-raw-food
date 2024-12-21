@@ -24,3 +24,4 @@ chicago-raw-food-app/.vite.config.ts.timestamp-*
 
 # Logs
 chicago-raw-food-app/logs
+.vercel

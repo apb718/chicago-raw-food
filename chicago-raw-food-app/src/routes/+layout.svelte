@@ -6,7 +6,9 @@
   import Footer from '$lib/Footer.svelte';
 
   import('@fortawesome/fontawesome-free/css/all.css');
+import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
 
+injectSpeedInsights();
   // Dynamically import Bootstrap JavaScript only in the browser
   if (browser) {
     // @ts-ignore
