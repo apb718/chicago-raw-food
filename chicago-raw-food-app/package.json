@@ -59,6 +59,7 @@
 		"flowbite-svelte": "^0.47.3",
 		"jsonwebtoken": "^9.0.2",
 		"mysql2": "^3.11.5",
+		"nodemailer": "^6.9.16",
 		"redis": "^4.7.0",
 		"uuid": "^11.0.3"
 	}
