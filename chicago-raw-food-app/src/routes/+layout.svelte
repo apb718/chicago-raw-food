@@ -1,3 +1,4 @@
+
 <script>
   import {browser} from '$app/environment'; // Detect if running in the browser
   import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
@@ -16,6 +17,9 @@
 
   }
 </script>
+
+
+
 
 <div class="container-fluid">
   <div class='row'>

@@ -15,6 +15,7 @@
 
 
 <style>
+
     img {
       height: 50vh; /* Ensures the image takes up the height of the carousel */
       object-fit: cover; /* Ensures the image fills the carousel and crops as needed */
@@ -34,4 +35,9 @@
     color: white; /* Make sure text is visible */
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); /* Optional shadow for readability */
   }
+
+  .carousel-item {
+    transition: transform 0.6s ease-in-out;
+  }
+
 </style>
