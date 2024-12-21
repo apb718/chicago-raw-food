@@ -27,7 +27,7 @@
                 captionText="eat living foods to energize your life"
               />
               <CarouselItem
-                imageSrc="/images//main-menu/carousel/img3.jpg"
+                imageSrc="/images/main-menu/carousel/img3.jpg"
                 altText="Third slide"
                 captionText="celebrate the power of plants"
               />
