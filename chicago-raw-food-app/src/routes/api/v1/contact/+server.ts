@@ -1,6 +1,8 @@
 import { log } from "$lib/server/logUtils.js";
 import { json, redirect } from "@sveltejs/kit";
 import {pool} from "$lib/db/mysql.js";
+import {GOOGLE_EMAIL} from "$env/static/private";
+import transporter from "$lib/server/emailSetup.js";
 
 
 interface Contact {
@@ -32,7 +34,30 @@ export const POST = async ({ request }) => {
 
     };
     // console.log(`${contact.fname} ${contact.lname} ${contact.email} ${contact.phone} ${contact.message}`);
+    let html: string = `<h2>Hi!</h2><pre>${contact.message}</pre>`;
 
+    const message = {
+        from: GOOGLE_EMAIL,
+        to: GOOGLE_EMAIL,
+        subject: `Contact Form Submission from ${contact.email}`,
+        text: `${contact.message}\nName: ${contact.fname} ${contact.lname}\nEmail: ${contact.email}\nPhone: ${contact.phone}`,
+        html: html
+    }
+
+
+    const sendEmail = async (message: any) => {
+        await new Promise((resolve, reject) => {
+            transporter.sendMail(message, async (error: string, info: any) => {
+                if (error) {
+                    await log("WARN", `Error sending mail: ${error}`);
+                    reject(error);
+                } else {
+                    resolve(info);
+                }
+            });
+        });
+    }
+    await sendEmail(message);
 
     // Validate form data
     if (!contact.fname || !contact.lname || !contact.email || !contact.message) {

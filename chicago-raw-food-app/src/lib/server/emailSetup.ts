@@ -1,3 +1,4 @@
+// @ts-ignore
 import nodemailer from "nodemailer";
 import { GOOGLE_EMAIL, GOOGLE_EMAIL_PASSWORD} from "$env/static/private";
 import { log } from "$lib/server/logUtils.ts";

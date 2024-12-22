@@ -11,7 +11,7 @@
         >
             <div class="row">
                 <div class="mb-3 col-xl-6">
-                    <label for="fname" class="form-label">Name</label>
+                    <label for="fname" class="form-label">First Name</label>
                     <input
                             type="text"
                             class="form-control"
@@ -19,10 +19,10 @@
                             name="fname"
                             required
                     />
-                    <div class="invalid-feedback">Please provide your name.</div>
+                    <div class="invalid-feedback">Please provide your first name.</div>
                 </div>
                 <div class="mb-3 col-xl-6">
-                    <label for="lname" class="form-label">Name</label>
+                    <label for="lname" class="form-label">Last Name</label>
                     <input
                             type="text"
                             class="form-control"
@@ -30,7 +30,7 @@
                             name="lname"
                             required
                     />
-                    <div class="invalid-feedback">Please provide your name.</div>
+                    <div class="invalid-feedback">Please provide your last name.</div>
                 </div>
             </div>
 
