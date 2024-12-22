@@ -34,7 +34,14 @@ export const POST = async ({ request }) => {
 
     };
     // console.log(`${contact.fname} ${contact.lname} ${contact.email} ${contact.phone} ${contact.message}`);
-    let html: string = `<h2>Hi!</h2><pre>${contact.message}</pre>`;
+    let html: string = `<h2>Contact Us Resopnse</h2>
+                        <pre>
+Name: ${contact.fname} ${contact.lname}
+Email: ${contact.email}
+Phone: ${contact.phone}
+
+${contact.message}
+                        </pre>`;
 
     const message = {
         from: GOOGLE_EMAIL,

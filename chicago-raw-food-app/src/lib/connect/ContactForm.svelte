@@ -1,7 +1,7 @@
 <!-- Contact Form -->
 <div class="row bg-pink">
     <div class="col-xl-3"></div>
-    <div id="contact-form" class="col-xl-6 my-5">
+    <div id="contact-form" class="col-xl-6 my-5 px-5">
         <h2 class="text-center mb-4" style="color: white;">Contact Us</h2>
         <form
                 method="POST"
@@ -78,3 +78,9 @@
     </div>
     <div class="col-xl-3"></div>
 </div>
+
+<style>
+    label {
+        color: white;
+    }
+</style>
