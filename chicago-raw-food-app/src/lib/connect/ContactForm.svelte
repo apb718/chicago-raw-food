@@ -69,8 +69,8 @@
             </div>
             <button
                     type="submit"
-                    class="btn btn-primary w-100"
-                    style="background-color: #6D604E; border: none;"
+                    class="btn btn-primary w-100 "
+                    style="background-color: #b4d784; color: #e64398; font-weight: bold; border: none;"
             >
                 Submit
             </button>
