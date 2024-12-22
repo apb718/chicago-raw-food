@@ -1,7 +1,7 @@
 import { log } from "$lib/server/logUtils.js";
 import { json, redirect } from "@sveltejs/kit";
 import {pool} from "$lib/db/mysql.js";
-import {GOOGLE_EMAIL} from "$env/static/private";
+import {GOOGLE_EMAIL, ORDERS_RECIPIENT} from "$env/static/private";
 import transporter from "$lib/server/emailSetup.js";
 
 
@@ -34,7 +34,7 @@ export const POST = async ({ request }) => {
 
     };
     // console.log(`${contact.fname} ${contact.lname} ${contact.email} ${contact.phone} ${contact.message}`);
-    let html: string = `<h2>Contact Us Resopnse</h2>
+    let html: string = `<h2>Contact Us Response</h2>
                         <pre>
 Name: ${contact.fname} ${contact.lname}
 Email: ${contact.email}
@@ -45,7 +45,7 @@ ${contact.message}
 
     const message = {
         from: GOOGLE_EMAIL,
-        to: GOOGLE_EMAIL,
+        to: ORDERS_RECIPIENT,
         subject: `Contact Form Submission from ${contact.email}`,
         text: `${contact.message}\nName: ${contact.fname} ${contact.lname}\nEmail: ${contact.email}\nPhone: ${contact.phone}`,
         html: html

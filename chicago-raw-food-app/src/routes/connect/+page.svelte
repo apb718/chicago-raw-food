@@ -10,7 +10,8 @@
 
 <LocationEmbed />
 <ContactForm />
-<InstagramEmbed />
+
+<!--<InstagramEmbed />-->
 
 
 
