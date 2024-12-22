@@ -1,15 +1,14 @@
 import mysql from 'mysql2/promise';
-import dotenv from 'dotenv';
+import { DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD, DATABASE_NAME, DATABASE_PORT} from "$env/static/private";
 
-dotenv.config(); // Load environment variables
 
 // Create a connection pool
 export const pool=  mysql.createPool({
-    host: process.env.DATABASE_HOST,
-    user: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE_NAME,
-    port: process.env.DATABASE_PORT ? parseInt(process.env.DATABASE_PORT, 10) : undefined, // Convert port to number
+    host: DATABASE_HOST,
+    user: DATABASE_USER,
+    password: DATABASE_PASSWORD,
+    database: DATABASE_NAME,
+    port: DATABASE_PORT ? parseInt(DATABASE_PORT, 10) : undefined, // Convert port to number
 });
 
 // /**

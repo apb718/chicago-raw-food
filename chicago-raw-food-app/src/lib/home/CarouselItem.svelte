@@ -7,7 +7,7 @@
 </script>
 
 <div class="carousel-item {isActive ? 'active' : ''}">
-  <img src={imageSrc} class="d-block w-100" alt={altText}>
+  <img src={imageSrc} class="d-block w-100" alt={altText} />
   <div class="carousel-caption d-none d-md-block outer">
     <h5 class="text-light inner">{captionText}</h5>
   </div>
