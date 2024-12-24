@@ -16,9 +16,12 @@ export const GET = async ({ params }) => {
 
     try {
         const [rows]: any = await pool.query(
-            'SELECT * FROM Product WHERE product_type_id = ?',
+            'SELECT * FROM Product ' +
+            'JOIN Product_Type USING (product_type_id) ' +
+            'WHERE product_type_id = ?;',
             [product_type]
         );
+        await log('INFO', rows);
 
         if (rows.length === 0) {
             await log('INFO', `Product not found for ID: ${product_type}`);

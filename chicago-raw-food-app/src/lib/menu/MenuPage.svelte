@@ -4,7 +4,7 @@
     type Product = {
         product_id: number;
         product_type_id: number;
-        product_type_name: string;
+        type_description: string;
         product_name: string;
         price: number;
         description: string;
@@ -41,7 +41,7 @@
                     products.push({
                         product_id: item.productId,
                         product_type_id: item.product_type_id,
-                        product_type_name: item.product_type_name,
+                        type_description: item.type_description,
                         product_name: item.product_name,
                         price: item.price,
                         description: item.description,
@@ -61,20 +61,19 @@
     onMount(() => {
         load();
     });
+
 </script>
 
 <!-- Display the fetched products -->
-<h1>Products</h1>
 {#if products.length > 0}
-    <ul>
-        {#each products as product}
-            <li>
-                <strong>{product.product_name}</strong> - ${product.price}
-                <p>{product.product_type_id}</p>
-                <p>{product.description}</p>
-            </li>
-        {/each}
-    </ul>
+    <h1>{products[0].type_description}</h1>
+    {#each products as product}
+        <li>
+            <strong>{product.product_name}</strong> - ${product.price}
+            <p>{product.product_type_id}</p>
+            <p>{product.description}</p>
+        </li>
+    {/each}
 {:else}
     <p>Loading or no products available...</p>
 {/if}
