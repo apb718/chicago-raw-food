@@ -15,7 +15,7 @@ export const PUT = async ({ cookies, request }) => {
         const { product_type_id, product_name, price, description, image_url, active } = await request.json();
 
         console.log(product_type_id);
-        if (!product_type_id || !product_type_id || !price || !description || !active) {
+        if (!product_type_id || !product_type_id || !price || !active) {
             await log('WARN', 'PUT request missing information');
             return json({ error: 'Missing product field(s) ' }, { status: 400 });
         }

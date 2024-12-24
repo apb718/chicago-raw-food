@@ -6,6 +6,9 @@ import { log } from '$lib/server/logUtils.js';
 // @ts-ignore
 export const GET = async ({ params }) => {
     const productId = params.id;
+    const logId = crypto.randomUUID();
+
+    await log("INFO", `Attempting log of ${productId} - ${logId}`)
 
     if (!productId) {
         await log('WARN', 'GET request without product ID');
