@@ -39,11 +39,6 @@ export const handle: Handle = async ({ event, resolve }) => {
     //     console.log("Unable to reauthenticate UUID");
     // }
 
-
-
-
-
-
     const response = await resolve(event);
     return response;
 };

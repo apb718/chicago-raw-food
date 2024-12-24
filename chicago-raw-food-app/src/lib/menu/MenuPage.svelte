@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte";
+    import {capitalizeWords} from "$lib/CapitolizeWords.js";
 
     type Product = {
         product_id: number;
@@ -66,14 +67,24 @@
 
 <!-- Display the fetched products -->
 {#if products.length > 0}
-    <h1>{products[0].type_description}</h1>
-    {#each products as product}
-        <li>
-            <strong>{product.product_name}</strong> - ${product.price}
-            <p>{product.product_type_id}</p>
-            <p>{product.description}</p>
-        </li>
-    {/each}
+
+    <div class="row">
+
+        <div class="col-xl-3"></div>
+        <div class="col-xl-6">
+            <h1 class="center-text">{products[0].type_description}</h1>
+            {#each products as product}
+                <div class="row mb-3">
+                    <strong class="center-text">{capitalizeWords(product.product_name)}</strong>
+                    <p class="center-text">{parseFloat(product.price).toString()}</p>
+                    <p class="center-text" style="margin-top: -15px">{product.description}</p>
+                </div>
+
+            {/each}
+        </div>
+        <div class="col-xl-3"></div>
+    </div>
+
 {:else}
     <p>Loading or no products available...</p>
 {/if}
