@@ -36,7 +36,7 @@
             menu
           </a>
           <ul class="dropdown-menu" aria-labelledby="menuDropdown">
-            <li><a class="dropdown-item" href="/menu/the-minis">The Minis</a></li>
+            <li><a class="dropdown-item" href="/menu/minis">The Minis</a></li>
             <li><a class="dropdown-item" href="/menu/hot-beverages">Hot Beverages</a></li>
             <li><a class="dropdown-item" href="/menu/juices-elixirs">Juices & Elixirs</a></li>
             <li><a class="dropdown-item" href="/menu/smoothies">Smoothies</a></li>
@@ -45,7 +45,8 @@
             <li><a class="dropdown-item" href="/menu/sandwiches">Sandwiches</a></li>
             <li><a class="dropdown-item" href="/menu/salads">Salads</a></li>
             <li><a class="dropdown-item" href="/menu/breads-spreads">Breads & Spreads</a></li>
-            <li><a class="dropdown-item" href="/menu/desserts-breakfast">Desserts & Breakfast</a></li>
+            <li><a class="dropdown-item" href="/menu/desserts">Desserts</a></li>
+            <li><a class="dropdown-item" href="/menu/breakfast">Breakfast</a></li>
             <li><a class="dropdown-item" href="/menu/dehydrated-items">Dehydrated Items</a></li>
             <li><a class="dropdown-item" href="/menu/dietary-restrictions">Dietary Restrictions</a></li>
             <li><a class="dropdown-item" href="/menu/crc-kosher">cRc Kosher</a></li>
