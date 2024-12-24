@@ -77,5 +77,14 @@
         <i class="bi bi-person"></i>
       </a>
     </div>
+  </div>
 
 </nav>
+
+<style>
+  .dropdown:hover .dropdown-menu {
+    display: block;
+    transition: all 0.3s ease;
+  }
+
+</style>
