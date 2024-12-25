@@ -38,6 +38,7 @@
         }
     });
 
+
     // Update product details
     async function updateProduct() {
         try {
