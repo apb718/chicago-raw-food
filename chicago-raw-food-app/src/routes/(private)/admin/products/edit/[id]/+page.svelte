@@ -11,7 +11,9 @@
         description?: string;
         image_url?: string;
         active?: number;
-    } = {};
+    } = {
+        description: "",
+    };
     let loading = true;
     let errorMessage = '';
 
@@ -133,7 +135,6 @@
                             class="form-control"
                             rows="3"
                             bind:value={product.description}
-                            required
                     ></textarea>
                 </div>
 

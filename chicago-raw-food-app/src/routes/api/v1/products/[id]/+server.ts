@@ -61,7 +61,6 @@ export const PUT = async ({ cookies, params, request }) => {
             product_type_id === undefined ||
             !product_name ||
             price === undefined ||
-            !description ||
             active === undefined
         ) {
             await log('WARN', 'Invalid input data for product update', { body });
