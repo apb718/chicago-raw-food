@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import {capitalizeWords} from "$lib/CapitolizeWords.js";
+    import { capitalizeWords } from "$lib/CapitalizeWords.js";
+    import {removeTrailingZeroes} from "$lib/removeTrailingZeroes.js";
 
     type Product = {
         product_id: number;
@@ -13,65 +14,48 @@
         active: boolean;
     };
 
-    export let categoryIds: number[]; // The IDs to loop through
-    let products: Product[] = []; // Array to store all fetched products
+    export let categoryIds: number[];
+    let products: Product[] = [];
+    let displayedTypes: Set<string> = new Set();
+    let allTypes: Set<string> = new Set();
 
-    // Define the load function
     async function load() {
-        console.log("load categories");
-        try {
-            // Base API URL (replace with your actual API URL)
-            const apiUrl = "/api/v1/menu/";
+        const apiUrl = "/api/v1/menu/";
+        for (const categoryId of categoryIds) {
+            const response = await fetch(`${apiUrl}${categoryId}`);
+            const categoryProducts = await response.json();
+            products = [...products, ...categoryProducts];
 
-            // Fetch data for each categoryId
-            for (const categoryId of categoryIds) {
-                const response = await fetch(`${apiUrl}${categoryId}`);
-
-                console.log(`INFO fetching ${categoryId} for menu page`);
-
-
-                if (!response.ok) {
-                    throw new Error(`Failed to fetch data for categoryId ${categoryId}: ${response.status}`);
-                }
-
-                // Parse the response as JSON
-                const categoryProducts = await response.json();
-
-                products = [...categoryProducts];
-
+            for (const product of products) {
+                allTypes.add(product.type_description);
             }
-        } catch (error) {
-            console.error("Error fetching data:", error);
         }
     }
 
-    // Call the load function when the component is mounted
     onMount(() => {
         load();
     });
-
 </script>
 
-<!-- Display the fetched products -->
+<!-- Render Products -->
 {#if products.length > 0}
+    <div>
+        {#if allTypes.size > 1}
+            <h1 class="center-text text-strong-pink">{products[0]?.type_description}</h1>
+        {/if}
+        {#each products as product (product.product_id)}
+            {#if !displayedTypes.has(product.type_description)}
+                <h1 class="center-text text-strong-pink">{product.type_description}</h1>
+                {@html (() => { displayedTypes.add(product.type_description); })()}
+            {/if}
 
-    <div class="row">
-
-        <div class="col-xl-3"></div>
-        <div class="col-xl-6">
-            <h1 class="center-text text-strong-pink">{products[0].type_description}</h1>
-            {#each products as product}
-                <div class="row mb-3">
-                    <strong class="center-text text-strong-green">{capitalizeWords(product.product_name)}</strong>
-                    <p class="center-text">{parseFloat(product.price.toString()).toString()}</p>
-                    <p class="center-text" style="margin-top: -15px">{product.description}</p>
-                </div>
-
-            {/each}
-        </div>
-        <div class="col-xl-3"></div>
+            <div>
+                <p class="center-text text-strong-green">{capitalizeWords(product.product_name)}</p>
+                <p class="center-text" style="margin-top: -15px">{removeTrailingZeroes(product.price)}</p>
+                <p class="center-text" style="margin-top: -15px">{product.description}</p>
+            </div>
+        {/each}
     </div>
-
 {:else}
     <p>Loading or no products available...</p>
 {/if}
