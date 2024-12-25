@@ -1,5 +1,5 @@
-import { pool } from "$lib/db/mysql.ts";
-import { redirect, type Handle } from "@sveltejs/kit";
+// import { pool } from "$lib/db/mysql.ts";
+import { type Handle } from "@sveltejs/kit";
 import { updateAuth } from "$lib/server/updateAuth.js";
 
 export const handle: Handle = async ({ event, resolve }) => {

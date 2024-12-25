@@ -37,21 +37,8 @@
                 // Parse the response as JSON
                 const categoryProducts = await response.json();
 
-                // // Append the fetched products to the products array
-                for (const item of categoryProducts) {
-                    products.push({
-                        product_id: item.productId,
-                        product_type_id: item.product_type_id,
-                        type_description: item.type_description,
-                        product_name: item.product_name,
-                        price: item.price,
-                        description: item.description,
-                        imageUrl: item.imageUrl ?? null,
-                        active: item.active,
-                    });
-                }
+                products = [...categoryProducts];
 
-                products = [...products, ...categoryProducts];
             }
         } catch (error) {
             console.error("Error fetching data:", error);
@@ -72,11 +59,11 @@
 
         <div class="col-xl-3"></div>
         <div class="col-xl-6">
-            <h1 class="center-text">{products[0].type_description}</h1>
+            <h1 class="center-text text-strong-pink">{products[0].type_description}</h1>
             {#each products as product}
                 <div class="row mb-3">
-                    <strong class="center-text">{capitalizeWords(product.product_name)}</strong>
-                    <p class="center-text">{parseFloat(product.price).toString()}</p>
+                    <strong class="center-text text-strong-green">{capitalizeWords(product.product_name)}</strong>
+                    <p class="center-text">{parseFloat(product.price.toString()).toString()}</p>
                     <p class="center-text" style="margin-top: -15px">{product.description}</p>
                 </div>
 
