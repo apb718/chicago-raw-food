@@ -30,7 +30,6 @@
             allTypes.add(categoryProducts[0].type_description)
 
         }
-        console.log(`fx ${allTypes.size}`);
         isLoaded = true;
     }
 

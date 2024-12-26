@@ -6,7 +6,16 @@ declare global {
 		// interface Locals {}
 		// interface PageData {}
 		// interface PageState {}
-		// interface Platform {}
+		type Product = {
+			product_id: number;
+			product_type_id: number;
+			type_description: string;
+			product_name: string;
+			price: number;
+			description: string;
+			imageUrl?: string | null;
+			active: boolean;
+		};
 	}
 }
 
