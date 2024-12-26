@@ -53,7 +53,7 @@
 
             if (response.ok) {
                 alert('Product updated successfully.');
-                goto('/admin/products'); // Redirect back to the products page
+                window.history.back(); // Redirect back to the products page
             } else {
                 const error = await response.json();
                 alert(`Error: ${error.error || 'Failed to update product.'}`);

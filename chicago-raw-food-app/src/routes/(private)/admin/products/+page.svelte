@@ -1,11 +1,14 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import { goto } from '$app/navigation';
+    import { page } from '$app/stores';
 
     let products = [];
     let loading = true;
-    let filterText = ""; // Filter text for name
-    let filterType: number | null = null; // Filter type for product type
+
+    // Filters
+    let filterText = "";
+    let filterType: string | null = null; // Use string to directly match query parameter types
 
     const productTypeMapping: Record<number, string> = {
         1: "Minis",
@@ -26,6 +29,7 @@
         16: "cRc Kosher"
     };
 
+    // Fetch products
     async function fetchProducts() {
         try {
             const response = await fetch('/api/v1/products');
@@ -41,37 +45,21 @@
         }
     }
 
-    async function removeProduct(product_id: number) {
-        if (confirm('Are you sure you want to delete this product?')) {
-            try {
-                const response = await fetch('/api/v1/products', {
-                    method: 'DELETE',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ product_id })
-                });
-                if (response.ok) {
-                    alert('Product removed successfully.');
-                    fetchProducts();
-                } else {
-                    alert('Error removing product.');
-                }
-            } catch (error) {
-                console.error('Unexpected error:', error);
-            }
-        }
-    }
-
-    function editProduct(product_id: number) {
-        goto(`/admin/products/edit/${product_id}`);
-    }
-
-    function addProduct() {
-        goto('/admin/products/add');
-    }
-
+    // Update filters from query parameters on page load
     onMount(() => {
+        const params = new URLSearchParams(window.location.search);
+        filterText = params.get('filterText') || "";
+        filterType = params.get('filterType');
         fetchProducts();
     });
+
+    // Synchronize filters with URL
+    $: {
+        const params = new URLSearchParams();
+        if (filterText) params.set('filterText', filterText);
+        if (filterType) params.set('filterType', filterType);
+        goto(`?${params.toString()}`, { replaceState: true });
+    }
 
     function getProductTypeDisplay(typeId: number): string {
         return `${typeId} - ${productTypeMapping[typeId] || 'Unknown'}`;
@@ -80,7 +68,7 @@
     // Derived filtered products list
     $: filteredProducts = products.filter(product => {
         const matchesText = product.product_name.toLowerCase().includes(filterText.toLowerCase());
-        const matchesType = filterType === null || product.product_type_id === filterType;
+        const matchesType = filterType === null || String(product.product_type_id) === filterType;
         return matchesText && matchesType;
     });
 </script>
@@ -89,7 +77,7 @@
     <h1 class="text-center mb-4">Manage Products</h1>
     <div class="d-flex justify-content-between mb-3">
         <h2>Products</h2>
-        <button class="btn btn-primary" on:click={addProduct}>Add New Product</button>
+        <button class="btn btn-primary" on:click={() => goto('/admin/products/add')}>Add New Product</button>
     </div>
 
     <!-- Filters -->
@@ -106,7 +94,7 @@
             <select class="form-select" bind:value={filterType}>
                 <option value={null}>All Types</option>
                 {#each Object.entries(productTypeMapping) as [typeId, typeName]}
-                    <option value={Number(typeId)}>{typeName}</option>
+                    <option value={typeId}>{typeName}</option>
                 {/each}
             </select>
         </div>
@@ -156,8 +144,8 @@
                             {/if}
                         </td>
                         <td>
-                            <button class="btn btn-warning btn-sm me-2" on:click={() => editProduct(product.product_id)}>Edit</button>
-                            <button class="btn btn-danger btn-sm" on:click={() => removeProduct(product.product_id)}>Remove</button>
+                            <button class="btn btn-warning btn-sm me-2" on:click={() => goto(`/admin/products/edit/${product.product_id}`)}>Edit</button>
+                            <button class="btn btn-danger btn-sm" on:click={() => console.log('Remove product')}>Remove</button>
                         </td>
                     </tr>
                 {/each}
