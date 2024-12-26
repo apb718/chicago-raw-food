@@ -84,6 +84,7 @@ export const PUT = async ({ cookies, params, request }) => {
                 [product_name, price, description, image_url, active, productId]
             );
 
+            // @ts-ignore
             if (productUpdateResult.affectedRows === 0) {
                 await connection.rollback();
                 await log('INFO', `Product not found or no changes made for ID: ${productId}`);

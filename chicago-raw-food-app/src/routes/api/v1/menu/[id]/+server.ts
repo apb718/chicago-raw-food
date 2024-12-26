@@ -18,6 +18,7 @@ export const GET = async ({ params }) => {
         const [rows]: any = await pool.query(
             'SELECT * FROM Product ' +
             'JOIN Product_Type USING (product_id) ' +
+            'JOIN Type USING (product_type_id)' +
             'WHERE product_type_id = ?;',
             [product_type]
         );

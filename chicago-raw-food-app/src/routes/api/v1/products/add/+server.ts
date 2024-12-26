@@ -32,6 +32,7 @@ export const PUT = async ({ cookies, request }) => {
             [product_name, price, description, image_url, active]
         );
 
+        // @ts-ignore
         const productId = productResult.insertId;
 
         // Insert into Product_Type table
