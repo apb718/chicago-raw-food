@@ -1,7 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import { goto } from '$app/navigation';
-    import { page } from '$app/stores';
 
     let products = [];
     let loading = true;
@@ -9,6 +8,7 @@
     // Filters
     let filterText = "";
     let filterType: string | null = null; // Use string to directly match query parameter types
+    let debouncedFilterText = ""; // To debounce search input
 
     const productTypeMapping: Record<number, string> = {
         1: "Minis",
@@ -28,6 +28,15 @@
         15: "Dietary Restriction",
         16: "cRc Kosher"
     };
+
+    // Debounce function for smoother search experience
+    let debounceTimer: NodeJS.Timeout;
+    function debounceFilterTextUpdate() {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+            debouncedFilterText = filterText; // Update debounced value
+        }, 200); // 300ms delay
+    }
 
     // Fetch products
     async function fetchProducts() {
@@ -49,16 +58,20 @@
     onMount(() => {
         const params = new URLSearchParams(window.location.search);
         filterText = params.get('filterText') || "";
+        debouncedFilterText = filterText; // Sync debounced value
         filterType = params.get('filterType');
         fetchProducts();
     });
 
     // Synchronize filters with URL
-    $: {
+    $: if (!loading) {
         const params = new URLSearchParams();
-        if (filterText) params.set('filterText', filterText);
+        if (debouncedFilterText) params.set('filterText', debouncedFilterText);
         if (filterType) params.set('filterType', filterType);
-        goto(`?${params.toString()}`, { replaceState: true });
+        const newUrl = `?${params.toString()}`;
+        if (window.location.search !== newUrl) {
+            history.replaceState(null, '', newUrl);
+        }
     }
 
     function getProductTypeDisplay(typeId: number): string {
@@ -67,7 +80,7 @@
 
     // Derived filtered products list
     $: filteredProducts = products.filter(product => {
-        const matchesText = product.product_name.toLowerCase().includes(filterText.toLowerCase());
+        const matchesText = product.product_name.toLowerCase().includes(debouncedFilterText.toLowerCase());
         const matchesType = filterType === null || String(product.product_type_id) === filterType;
         return matchesText && matchesType;
     });
@@ -88,6 +101,7 @@
                     class="form-control"
                     placeholder="Search by product name..."
                     bind:value={filterText}
+                    on:input={debounceFilterTextUpdate}
             />
         </div>
         <div class="col-md-6">

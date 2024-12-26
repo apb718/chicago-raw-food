@@ -1,21 +1,43 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+
     import { page } from '$app/stores';
-    import { goto } from '$app/navigation';
 
     let product: {
         product_id?: number;
-        product_type_id?: string;
+        product_type_id: string[]; // Ensure it is always an array of strings
         product_name?: string;
         price?: number;
         description?: string;
         image_url?: string;
         active?: number;
     } = {
+        product_type_id: [], // Initialize as an empty array
         description: "",
     };
+
+
     let loading = true;
-    let errorMessage = '';
+    let errorMessage = "";
+
+    const productTypeOptions = [
+        { id: 1, name: "Minis" },
+        { id: 2, name: "Hot Beverage" },
+        { id: 3, name: "Juices" },
+        { id: 4, name: "Elixir" },
+        { id: 5, name: "Smoothie" },
+        { id: 6, name: "Bowl" },
+        { id: 7, name: "Entree" },
+        { id: 8, name: "Sandwich" },
+        { id: 9, name: "Salad" },
+        { id: 10, name: "Bread" },
+        { id: 11, name: "Spread" },
+        { id: 12, name: "Dessert" },
+        { id: 13, name: "Breakfast" },
+        { id: 14, name: "Dehydrated" },
+        { id: 15, name: "Dietary Restriction" },
+        { id: 16, name: "cRc Kosher" },
+    ];
 
     // Fetch product details on mount
     onMount(async () => {
@@ -25,42 +47,78 @@
             const response = await fetch(`/api/v1/products/${productId}`);
             if (response.ok) {
                 const fetchedProduct = await response.json();
-                fetchedProduct.product_type_id = String(fetchedProduct.product_type_id); // Ensure it matches the option values
-                product = fetchedProduct;
+                console.log("Fetched product:", fetchedProduct);
+
+                console.log(`${fetchedProduct.product_type_id}`)
+
+
+                // product.product_type_id.push(fetchedProduct.product_type_id);
+
+                // for (const item in fetchedProduct.product_type_id) {
+                //     console.log("e " + item);
+                //     product.product_type_id.push(item.toString());
+                // }
+
+                product = {
+                    product_id: fetchedProduct[0].product_id, // Use `:` for property assignment
+                    product_type_id: [],
+                    product_name: fetchedProduct[0].product_name,
+                    price: fetchedProduct[0].price,
+                    description: fetchedProduct[0].description,
+                    image_url: fetchedProduct[0].image_url,
+                    active: fetchedProduct[0].active,
+                };
+
+                for (const item of fetchedProduct) {
+                    product.product_type_id.push(item.product_type_id);
+                }
+
+
+                console.log("Processed product type IDs:", product.product_type_id);
+
+
             } else {
-                errorMessage = 'Failed to load product details.';
+                errorMessage = "Failed to load product details.";
             }
         } catch (error) {
-            console.error('Unexpected error:', error);
-            errorMessage = 'Unexpected error occurred while loading the product.';
+            console.error("Unexpected error:", error);
+            errorMessage = "Unexpected error occurred while loading the product.";
         } finally {
+            console.log("Initial product_type_id:", product.product_type_id);
+
             loading = false;
         }
     });
 
-
     // Update product details
     async function updateProduct() {
         try {
-            console.log(product);
+            console.log("Product before update:", product);
+
+            // Convert product_type_id back to numbers for saving
+            const productToSave = {
+                ...product,
+                product_type_id: product.product_type_id.map(Number),
+            };
+
             const response = await fetch(`/api/v1/products/${product.product_id}`, {
-                method: 'PUT',
+                method: "PUT",
                 headers: {
-                    'Content-Type': 'application/json'
+                    "Content-Type": "application/json",
                 },
-                body: JSON.stringify(product)
+                body: JSON.stringify(productToSave),
             });
 
             if (response.ok) {
-                alert('Product updated successfully.');
+                alert("Product updated successfully.");
                 window.history.back(); // Redirect back to the products page
             } else {
                 const error = await response.json();
-                alert(`Error: ${error.error || 'Failed to update product.'}`);
+                alert(`Error: ${error.error || "Failed to update product."}`);
             }
         } catch (error) {
-            console.error('Unexpected error:', error);
-            alert('Unexpected error occurred.');
+            console.error("Unexpected error:", error);
+            alert("Unexpected error occurred.");
         }
     }
 
@@ -96,25 +154,23 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="product_type_id" class="form-label">Product Type</label>
-                    <select id="product_type_id" class="form-select" bind:value={product.product_type_id}>
-                        <option value="1">Minis</option>
-                        <option value="2">Hot Beverage</option>
-                        <option value="3">Juices</option>
-                        <option value="4">Elixir</option>
-                        <option value="5">Smoothie</option>
-                        <option value="6">Bowl</option>
-                        <option value="7">Entree</option>
-                        <option value="8">Sandwich</option>
-                        <option value="9">Salad</option>
-                        <option value="10">Bread</option>
-                        <option value="11">Spread</option>
-                        <option value="12">Dessert</option>
-                        <option value="13">Breakfast</option>
-                        <option value="14">Dehydrated</option>
-                        <option value="15">Dietary Restriction</option>
-                        <option value="16">cRc Kosher</option>
-                    </select>
+                    <label class="form-label">Product Types</label>
+                    <div class="d-flex flex-wrap">
+                        {#each productTypeOptions as { id, name }}
+
+                            <div class="form-check me-3">
+                                <label for="{id}">{name}</label>
+                                <input
+                                        bind:group={product.product_type_id}
+                                        type="checkbox"
+                                        id="{id}"
+                                        value="{id}"
+                                />
+                            </div>
+                        {/each}
+                    </div>
+
+
                 </div>
 
                 <div class="mb-3">
