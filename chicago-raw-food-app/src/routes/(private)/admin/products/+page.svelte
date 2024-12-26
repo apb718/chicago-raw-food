@@ -4,8 +4,9 @@
 
     let products = [];
     let loading = true;
+    let filterText = ""; // Filter text for name
+    let filterType: number | null = null; // Filter type for product type
 
-    // Mapping product type ID to word representation
     const productTypeMapping: Record<number, string> = {
         1: "Minis",
         2: "Hot Beverage",
@@ -25,7 +26,6 @@
         16: "cRc Kosher"
     };
 
-    // Fetch all products
     async function fetchProducts() {
         try {
             const response = await fetch('/api/v1/products');
@@ -41,7 +41,6 @@
         }
     }
 
-    // Delete a product
     async function removeProduct(product_id: number) {
         if (confirm('Are you sure you want to delete this product?')) {
             try {
@@ -52,7 +51,7 @@
                 });
                 if (response.ok) {
                     alert('Product removed successfully.');
-                    fetchProducts(); // Refresh the table
+                    fetchProducts();
                 } else {
                     alert('Error removing product.');
                 }
@@ -62,12 +61,10 @@
         }
     }
 
-    // Navigate to edit product page
     function editProduct(product_id: number) {
         goto(`/admin/products/edit/${product_id}`);
     }
 
-    // Navigate to add product page
     function addProduct() {
         goto('/admin/products/add');
     }
@@ -76,10 +73,16 @@
         fetchProducts();
     });
 
-    // Get the display value for the product type
     function getProductTypeDisplay(typeId: number): string {
         return `${typeId} - ${productTypeMapping[typeId] || 'Unknown'}`;
     }
+
+    // Derived filtered products list
+    $: filteredProducts = products.filter(product => {
+        const matchesText = product.product_name.toLowerCase().includes(filterText.toLowerCase());
+        const matchesType = filterType === null || product.product_type_id === filterType;
+        return matchesText && matchesType;
+    });
 </script>
 
 <div class="container mt-5">
@@ -89,6 +92,26 @@
         <button class="btn btn-primary" on:click={addProduct}>Add New Product</button>
     </div>
 
+    <!-- Filters -->
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search by product name..."
+                    bind:value={filterText}
+            />
+        </div>
+        <div class="col-md-6">
+            <select class="form-select" bind:value={filterType}>
+                <option value={null}>All Types</option>
+                {#each Object.entries(productTypeMapping) as [typeId, typeName]}
+                    <option value={Number(typeId)}>{typeName}</option>
+                {/each}
+            </select>
+        </div>
+    </div>
+
     {#if loading}
         <div class="text-center">
             <div class="spinner-border text-primary" role="status">
@@ -96,7 +119,7 @@
             </div>
         </div>
     {:else}
-        {#if products.length > 0}
+        {#if filteredProducts.length > 0}
             <table class="table table-bordered table-hover">
                 <thead class="table-dark">
                 <tr>
@@ -111,7 +134,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                {#each products as product}
+                {#each filteredProducts as product}
                     <tr>
                         <td>{product.product_id}</td>
                         <td>{getProductTypeDisplay(product.product_type_id)}</td>
@@ -142,7 +165,7 @@
             </table>
         {:else}
             <div class="alert alert-info text-center">
-                No products found. Add some to get started.
+                No products match your search.
             </div>
         {/if}
     {/if}

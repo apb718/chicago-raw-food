@@ -142,7 +142,6 @@
                 <div class="mb-3">
                     <label for="image_url" class="form-label">Image URL</label>
                     <input
-                            type="url"
                             id="image_url"
                             class="form-control"
                             bind:value={product.image_url}

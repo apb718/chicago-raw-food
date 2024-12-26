@@ -55,7 +55,7 @@
             {/if}
 
             <div class="mb-5">
-                <p class="center-text text-strong-green">{capitalizeWords(product.product_name)}</p>
+                <p class="center-text text-strong-green">{capitalizeWords(product.product_name)} </p>
                 <p class="center-text" style="margin-top: -15px">{removeTrailingZeroes(product.price)}</p>
                 <p class="center-text" style="margin-top: -15px">{product.description}</p>
             </div>
