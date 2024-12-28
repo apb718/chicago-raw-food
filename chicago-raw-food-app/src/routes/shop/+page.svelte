@@ -7,20 +7,17 @@
     import {DEHYDRATED_ID} from "$lib/products/productTypes.js";
 
 
-    let categoryIds: number[] = [DEHYDRATED_ID];
+    let categoryId: number = DEHYDRATED_ID;
 
     let products = $state<Product[]>();
     let cartProducts = $state<CartProduct[]>([]);
 
     async function load() {
         const apiUrl = "/api/v1/menu/";
-
         const response = await fetch(`${apiUrl}${categoryId}`);
         const categoryProducts = await response.json();
-        console.log(categoryProducts);
+
         products = [...categoryProducts];
-
-
     }
 
     onMount(() => {
