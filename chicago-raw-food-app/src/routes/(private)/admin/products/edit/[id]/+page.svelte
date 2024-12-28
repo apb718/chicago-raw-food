@@ -2,19 +2,13 @@
     import { onMount } from 'svelte';
 
     import { page } from '$app/stores';
+    import type {Product} from "../../../../../../types.js";
 
-    let product: {
-        product_id?: number;
-        product_type_id: string[]; // Ensure it is always an array of strings
-        product_name?: string;
-        price?: number;
-        description?: string;
-        image_url?: string;
-        active?: number;
-    } = {
+    let product: Product = {
         product_type_id: [], // Initialize as an empty array
         description: "",
     };
+
 
 
     let loading = true;

@@ -3,36 +3,31 @@
     import Banner from "$lib/Banner/Banner.svelte";
     import {onMount} from "svelte";
     import {capitalizeWords} from "$lib/CapitalizeWords.js";
-    // import {slide} from "svelte/transition"
-    // import {capitalizeWords} from "$lib/CapitalizeWords.js";
-    // import {removeTrailingZeroes} from "$lib/removeTrailingZeroes.js";
+    import type {Product, CartProduct} from "$lib/types.js";
+    import {DEHYDRATED_ID} from "$lib/products/productTypes.js";
 
 
-    const DEHYDRATED_ID = [14];
+    let categoryIds: number[] = [DEHYDRATED_ID];
 
-    let categoryIds: number[] = DEHYDRATED_ID;
-    let products: Product[] = [];
-    let displayedTypes: Set<string> = new Set();
-    let allTypes: Set<string> = new Set();
-    let isLoaded = false;
+    let products = $state<Product[]>();
+    let cartProducts = $state<CartProduct[]>([]);
 
     async function load() {
         const apiUrl = "/api/v1/menu/";
-        for (const categoryId of categoryIds) {
+
         const response = await fetch(`${apiUrl}${categoryId}`);
         const categoryProducts = await response.json();
         console.log(categoryProducts);
-        products = [...products, ...categoryProducts];
-        allTypes.add(categoryProducts[0].type_description)
+        products = [...categoryProducts];
 
-    }
-        // console.log(`fx ${allTypes.size}`);
-        isLoaded = true;
+
     }
 
     onMount(() => {
         load();
     });
+
+
 
 </script>
 
@@ -64,6 +59,18 @@
                                 <h5 class="card-title">{capitalizeWords(product.product_name)}</h5>
                                 <p class="card-text">{product.description}</p>
                                 <p class="card-text"><strong>${product.price}</strong></p>
+                                <button
+                                        class="rounded hover:blue"
+                                        onclick={() => {
+                                            return cartProducts.push({
+                                                id: crypto.randomUUID(),
+                                                quantity: 1,
+                                                product: pioduct
+                                            });
+                                        }}
+                                >
+                                    Button
+                                </button>
                             </div>
                         </div>
                     </div>                {/if}
