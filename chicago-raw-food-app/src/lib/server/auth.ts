@@ -1,26 +1,16 @@
-import { redirect } from '@sveltejs/kit';
-import { pool } from '$lib/db/mysql.js';
-import { getCookie } from '$lib/AuthCookie.js';
-import type { RowDataPacket } from 'mysql2';
+import {pool} from '$lib/db/mysql.js';
+import {log} from "$lib/server/logUtils.ts"
+import type {RowDataPacket} from 'mysql2';
 
 interface UserAuth extends RowDataPacket {
     expiry_time: string;
     admin: number;
 }
 
-const log = (message: string, data?: unknown) => {
-    console.log(`[Auth Utility] ${message}`, data || '');
-};
 
-export async function requireAdmin(cookies: any): Promise<UserAuth> {
-    const authToken = getCookie(cookies);
-
-    if (!authToken) {
-        log('No auth token found', { authToken });
-        throw redirect(303, '/auth');
-    }
-
+async function verifyIfAdmin(authToken: string): Promise<Boolean> {
     try {
+        // Gets user from Auth in database
         const [results] = await pool.query<UserAuth[]>(
             `
                 SELECT expiry_time, admin
@@ -31,24 +21,44 @@ export async function requireAdmin(cookies: any): Promise<UserAuth> {
             [authToken]
         );
 
-        log('Query Results:', results);
+        await log('INFO', `Query Results: ${results}`);
 
+        // Verifies it is an array, and there is data
         if (Array.isArray(results) && results.length > 0) {
+            // gets first "User"
             const user = results[0];
-            log('User Data:', user);
+            await log('INFO', `User Data: ${user}`);
 
-            if (user.admin !== 2) {
-                log('User is not an admin');
-                throw redirect(303, '/auth');
+            // if user is admin let through
+            if (user.admin == 2) {
+
+                return true;
             }
 
-            return user;
+            // user is not level 2
+            await log("INFO", `User is not an admin`);
+            return false;
         } else {
-            log('No matching user found or token expired');
-            throw redirect(303, '/auth');
+            await log("INFO", `No matching user found or token expired`);
+            return false;
         }
     } catch (error) {
-        log('Error validating user:', error);
-        throw redirect(500, '/error');
+        return false;
+    }
+}
+
+export async function requireAdmin(authToken: string): Promise<Boolean> {
+
+    if (!authToken) {
+        await log("INFO", `No auth token found ${authToken}`);
+        return false;
+    }
+
+    const isAdmin = await verifyIfAdmin(authToken);
+
+    if (!isAdmin) {
+        return false;
+    } else {
+        return true;
     }
 }
