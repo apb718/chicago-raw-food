@@ -1,7 +1,5 @@
 <script lang="ts">
-    // import { log } from '$lib/server/logUtils.ts'; // Ensure this is imported correctly
-
-    let product_type_id: string = '';
+    let product_type_ids: string[] = []; // Update to handle multiple product types
     let product_name: string = '';
     let price: number | null = null;
     let description: string = '';
@@ -37,34 +35,31 @@
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    product_type_id,
+                    product_type_ids,
                     product_name,
                     price,
                     description,
                     image_url,
-                    active
+                    active,
                 }),
             });
 
             if (response.ok) {
                 const result = await response.json();
-                // await log('INFO', 'Product added successfully', { product_name });
                 alert('Product added successfully!');
                 resetForm();
             } else {
                 const error = await response.json();
-                // await log('WARN', 'Failed to add product', error);
                 alert(`Error: ${error.message || 'Failed to add product'}`);
             }
         } catch (error) {
             console.error('Unexpected error:', error);
-            await log('ERROR', 'Unexpected error occurred while adding product', { error });
             alert('Unexpected error occurred.');
         }
     }
 
     function resetForm() {
-        product_type_id = '';
+        product_type_ids = [];
         product_name = '';
         price = null;
         description = '';
@@ -77,13 +72,21 @@
     <h1 class="text-center mb-4">Add New Product</h1>
     <form on:submit|preventDefault={handleSubmit}>
         <div class="mb-3">
-            <label for="product_type_id" class="form-label">Product Type</label>
-            <select id="product_type_id" class="form-select" bind:value={product_type_id} required>
-                <option value="" disabled selected>Select Product Type</option>
-                {#each productTypes as type}
-                    <option value={type.id}>{type.name}</option>
+            <label class="form-label">Product Types</label>
+            <div class="d-flex flex-wrap">
+                {#each productTypes as { id, name }}
+                    <div class="form-check me-3">
+                        <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id={"product_type_" + id}
+                                value={id}
+                                bind:group={product_type_ids}
+                        />
+                        <label class="form-check-label" for={"product_type_" + id}>{name}</label>
+                    </div>
                 {/each}
-            </select>
+            </div>
         </div>
 
         <div class="mb-3">

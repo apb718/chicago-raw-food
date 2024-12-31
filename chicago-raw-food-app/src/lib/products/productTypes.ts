@@ -1,0 +1,16 @@
+export const MINIS_ID = 1;
+export const HOT_BEVERAGES_ID = 2;
+export const JUICES_ID = 3;
+export const ELIXIRS_ID = 4;
+export const SMOOTHIES_ID = 5;
+export const BOWLS_ID = 6;
+export const ENTREES_ID = 7;
+export const SANDWICHES_ID = 8;
+export const SALADS_ID = 9;
+export const BREADS_ID = 10;
+export const SPREADS_ID = 11;
+export const DESSERTS_ID = 12;
+export const BREAKFASTS_ID = 13;
+export const DEHYDRATED_ID = 14;
+export const DIETARY_RESTRICTION_ID = 15;
+export const CRC_KOSHER_ID = 16;

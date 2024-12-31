@@ -11,6 +11,7 @@ declare module 'bcrypt' {
 }
 
 
+
 // Declare jsonwebtoken module
 declare module 'jsonwebtoken' {
     export function sign(

@@ -5,7 +5,11 @@
     let products = [];
     let loading = true;
 
-    // Mapping product type ID to word representation
+    // Filters
+    let filterText = "";
+    let filterType: string | null = null; // Use string to directly match query parameter types
+    let debouncedFilterText = ""; // To debounce search input
+
     const productTypeMapping: Record<number, string> = {
         1: "Minis",
         2: "Hot Beverage",
@@ -25,7 +29,16 @@
         16: "cRc Kosher"
     };
 
-    // Fetch all products
+    // Debounce function for smoother search experience
+    let debounceTimer: NodeJS.Timeout;
+    function debounceFilterTextUpdate() {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+            debouncedFilterText = filterText; // Update debounced value
+        }, 200); // 300ms delay
+    }
+
+    // Fetch products
     async function fetchProducts() {
         try {
             const response = await fetch('/api/v1/products');
@@ -41,52 +54,64 @@
         }
     }
 
-    // Delete a product
-    async function removeProduct(product_id: number) {
-        if (confirm('Are you sure you want to delete this product?')) {
-            try {
-                const response = await fetch('/api/v1/products', {
-                    method: 'DELETE',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ product_id })
-                });
-                if (response.ok) {
-                    alert('Product removed successfully.');
-                    fetchProducts(); // Refresh the table
-                } else {
-                    alert('Error removing product.');
-                }
-            } catch (error) {
-                console.error('Unexpected error:', error);
-            }
-        }
-    }
-
-    // Navigate to edit product page
-    function editProduct(product_id: number) {
-        goto(`/admin/products/edit/${product_id}`);
-    }
-
-    // Navigate to add product page
-    function addProduct() {
-        goto('/admin/products/add');
-    }
-
+    // Update filters from query parameters on page load
     onMount(() => {
+        const params = new URLSearchParams(window.location.search);
+        filterText = params.get('filterText') || "";
+        debouncedFilterText = filterText; // Sync debounced value
+        filterType = params.get('filterType');
         fetchProducts();
     });
 
-    // Get the display value for the product type
+    // Synchronize filters with URL
+    $: if (!loading) {
+        const params = new URLSearchParams();
+        if (debouncedFilterText) params.set('filterText', debouncedFilterText);
+        if (filterType) params.set('filterType', filterType);
+        const newUrl = `?${params.toString()}`;
+        if (window.location.search !== newUrl) {
+            history.replaceState(null, '', newUrl);
+        }
+    }
+
     function getProductTypeDisplay(typeId: number): string {
         return `${typeId} - ${productTypeMapping[typeId] || 'Unknown'}`;
     }
+
+    // Derived filtered products list
+    $: filteredProducts = products.filter(product => {
+        const matchesText = product.product_name.toLowerCase().includes(debouncedFilterText.toLowerCase());
+        const matchesType = filterType === null || String(product.product_type_id) === filterType;
+        return matchesText && matchesType;
+    });
 </script>
 
 <div class="container mt-5">
     <h1 class="text-center mb-4">Manage Products</h1>
     <div class="d-flex justify-content-between mb-3">
         <h2>Products</h2>
-        <button class="btn btn-primary" on:click={addProduct}>Add New Product</button>
+        <button class="btn btn-primary" on:click={() => goto('/admin/products/add')}>Add New Product</button>
+    </div>
+
+    <!-- Filters -->
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search by product name..."
+                    bind:value={filterText}
+                    on:input={debounceFilterTextUpdate}
+            />
+        </div>
+        <div class="col-md-6">
+            <select class="form-select" bind:value={filterType}>
+                <option value={null}>All Types</option>
+                {#each Object.entries(productTypeMapping) as [typeId, typeName]}
+                    <option value={typeId}>{typeName}</option>
+                {/each}
+            </select>
+        </div>
     </div>
 
     {#if loading}
@@ -96,7 +121,7 @@
             </div>
         </div>
     {:else}
-        {#if products.length > 0}
+        {#if filteredProducts.length > 0}
             <table class="table table-bordered table-hover">
                 <thead class="table-dark">
                 <tr>
@@ -111,7 +136,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                {#each products as product}
+                {#each filteredProducts as product}
                     <tr>
                         <td>{product.product_id}</td>
                         <td>{getProductTypeDisplay(product.product_type_id)}</td>
@@ -133,8 +158,8 @@
                             {/if}
                         </td>
                         <td>
-                            <button class="btn btn-warning btn-sm me-2" on:click={() => editProduct(product.product_id)}>Edit</button>
-                            <button class="btn btn-danger btn-sm" on:click={() => removeProduct(product.product_id)}>Remove</button>
+                            <button class="btn btn-warning btn-sm me-2" on:click={() => goto(`/admin/products/edit/${product.product_id}`)}>Edit</button>
+                            <button class="btn btn-danger btn-sm" on:click={() => console.log('Remove product')}>Remove</button>
                         </td>
                     </tr>
                 {/each}
@@ -142,7 +167,7 @@
             </table>
         {:else}
             <div class="alert alert-info text-center">
-                No products found. Add some to get started.
+                No products match your search.
             </div>
         {/if}
     {/if}
