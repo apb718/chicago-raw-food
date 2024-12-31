@@ -13,12 +13,16 @@
   if (browser) {
     // @ts-ignore
     import('bootstrap/dist/js/bootstrap.bundle.js');
+    import('bootstrap/dist/css/bootstrap.min.css'); // Bootstrap CSS
+
+
 
   }
 
   // Speed Insights for Vercel
   injectSpeedInsights();
 </script>
+
 
 
 

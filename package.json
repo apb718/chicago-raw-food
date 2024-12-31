@@ -1,5 +1,8 @@
 {
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^4.6.2",
+    "jquery": "^3.7.1",
     "svelte": "^5.16.0"
   }
 }
