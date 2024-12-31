@@ -50,11 +50,12 @@
 .raleway {
     font-family: 'Raleway', serif;
 }
+.raleway-thin {
+    font-family: 'Raleway-thin', serif;
+}
 .para-text {
 
     color: #606060;
     font-family: 'Raleway', serif;
 }
-* {
-    /*    font-family: Railway-thin, serif;*/
-}
+

@@ -2,9 +2,7 @@
     import AdminLinkCard from "\$lib/admin/adminLinkCard.svelte";
     import {goto} from "$app/navigation";
 </script>
-<!--<head>-->
-<!--    <title>CRF - Admin</title>-->
-<!--</head>-->
+
 
 <div class="col-xl-8">
     <AdminLinkCard

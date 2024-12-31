@@ -1,11 +1,22 @@
 <script lang="ts">
+    import {goto} from "$app/navigation";
+    import {page} from "$app/stores";
+    import {get} from "svelte/store";
+
     let email = '';
     let password = '';
     let error: string | null = null;
 
+    let redirectTo = "";
+
+    $: {
+        const params = get(page).url.searchParams;
+        redirectTo = params.get('redirectTo') || '';
+    }
+
     async function login(): Promise<void> {
         error = null;
-        console.log('Login');
+
         try {
             const response = await fetch('/api/v1/login', {
                 method: 'POST',
@@ -13,16 +24,16 @@
                 body: JSON.stringify({ email, password })
             });
 
-
+            // if response is not good failed login
             if (!response.ok) {
                 const { error } = await response.json();
                 throw new Error(error);
             } else {
-                window.location.href = '/';
+                await goto(`/${redirectTo}`)
             }
 
         } catch (err) {
-
+            console.log("Failed to login")
         }
     }
 </script>

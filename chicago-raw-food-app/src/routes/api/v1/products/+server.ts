@@ -5,7 +5,7 @@ import { log } from '$lib/server/logUtils.js';
 
 export const GET = async () => {
     try {
-        const [products] = await pool.query('SELECT * FROM Product');
+        const [products] = await pool.query('SELECT * FROM Product JOIN Product_Type USING (product_id)');
         await log('INFO', 'Fetched products successfully');
         return json(products);
     } catch (error) {

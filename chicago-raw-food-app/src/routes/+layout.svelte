@@ -5,17 +5,19 @@
   import 'bootstrap-icons/font/bootstrap-icons.css';
   import Navbar from '$lib/Navbar.svelte';
   import Footer from '$lib/Footer.svelte';
-
   import('@fortawesome/fontawesome-free/css/all.css');
-  // import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
-  //
-  // injectSpeedInsights();
+  import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+
+
   // Dynamically import Bootstrap JavaScript only in the browser
   if (browser) {
     // @ts-ignore
     import('bootstrap/dist/js/bootstrap.bundle.js');
 
   }
+
+  // Speed Insights for Vercel
+  injectSpeedInsights();
 </script>
 
 

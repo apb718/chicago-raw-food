@@ -1,10 +1,17 @@
 <script lang="ts">
     import { goto } from '$app/navigation';
+    import { page } from '$app/stores'
 
     // Function to handle the back navigation
     function goBack() {
         if (window.history.length > 1) {
-            window.history.back(); // Go to the previous page in history
+            let redirectUrl = $page.url.pathname.substring(0, $page.url.pathname.lastIndexOf('/'));
+            console.log(`redirect link ${redirectUrl}`);
+
+            redirectUrl = redirectUrl.replace('edit', '');
+
+            // console.log(`redirect link ${redirectUrl}`);
+            goto(redirectUrl);
         } else {
             goto('/admin'); // Fallback if there's no history
         }
