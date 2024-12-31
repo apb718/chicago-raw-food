@@ -24,10 +24,10 @@
             {/if}
             <div class="item-tags">
                 {#if glutenFree}
-                    <i class="fas fa-wheat-awn" aria-label="Gluten-Free"></i>
+                    <i class="fas fa-wheat-awn text-green" aria-label="Gluten-Free"></i>
                 {/if}
                 {#if vegan}
-                    <i class="fas fa-leaf" aria-label="Vegan"></i>
+                    <i class="fas fa-leaf text-green" aria-label="Vegan"></i>
                 {/if}
             </div>
         </div>
