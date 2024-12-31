@@ -1,33 +1,31 @@
-# create-svelte
+# Chicago Raw Food Website - SvelteKit Redesign
+This repository contains the redevelopment of the Chicago Raw Food website using SvelteKit, a modern framework for building fast and scalable web applications. The project aims to transition the website from its existing platform to a more maintainable, efficient, and user-friendly solution.
+ 
+## Features
+- Content Migration: Seamlessly migrate all functionality, content, and features from the original website.
+- Improved Performance: Optimize loading times and responsiveness using SvelteKit's modern architecture.
+- User-Friendly Interface: Enhance the user experience with a clean and intuitive design.
+- Dynamic Components: Incorporate interactive components for ordering, promotions, and customer engagement.
+- Scalable Framework: Provide a solid foundation for future growth and feature expansion.
+## Technologies Used
+- SvelteKit: For the front-end framework.
+- Bootstrap: For responsive and modern styling.
+- Node.js: To handle back-end functionality where required.
+- CMS Integration: Potential integration with a CMS for managing dynamic content.
+## Goals
+- Maintain Brand Identity: Preserve the unique aesthetics and values of Chicago Raw Food.
+- Enhance Functionality: Improve usability and add new features to support business goals.
+- Future-Proof Design: Ensure scalability and ease of maintenance for developers.
 
-Everything you need to build a Svelte library, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
-
-Read more about creating a library [in the docs](https://svelte.dev/docs/kit/packaging).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
+## Contributions
+This project is open for contributions to improve its features, resolve issues, and expand functionality. Please refer to the CONTRIBUTING.md file for guidelines.
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
 ```bash
+cd chicago-raw-food-app
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
-
-Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
 
 ## Building
 
@@ -43,15 +41,8 @@ To create a production version of your showcase app:
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
-
 ## Publishing
 
-Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
-
-To publish your library to [npm](https://www.npmjs.com):
 
 ```bash
 npm publish
