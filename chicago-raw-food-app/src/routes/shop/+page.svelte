@@ -80,7 +80,7 @@
         on:click={() => toggleModal(null)}
 >
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content" on:click={() => stopPropagation}>
+        <div class="modal-content" on:click|stopPropagation>
             <div class="modal-header">
                 <img
                         class="modal-img"
@@ -239,14 +239,14 @@
 
                                 <!-- Remove Link -->
                                 <div class="col-2 text-end">
-                                    <a
+                                    <button
                                             class="text-primary"
                                             on:click={ () =>
                                             cartProducts = cartProducts.filter((item) => item.id !== cartProduct.id)
                                         }
                                     >
                                         Remove
-                                    </a>
+                                    </button>
                                 </div>
                                 <hr />
                             </div>
