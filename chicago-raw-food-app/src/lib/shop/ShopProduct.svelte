@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
-<div class="menu-item-card col-xl-5  m-3">
+<div class="menu-item-card col-xl-11  m-3">
     <div class="row menu-item-content">
         <!-- Main Item Section -->
         <div class="menu-item-info col-xl-10 m-3">

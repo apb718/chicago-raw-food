@@ -1,7 +1,7 @@
 import type {Product} from "$lib/types.js";
 
 export const DEFAULT_PRODUCT: Product = {
-    product_id: 0,
+    product_id: -1,
     product_type_id: ["default"],
     product_name: "Default Product",
     price: 0,

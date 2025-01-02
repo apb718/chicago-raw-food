@@ -6,24 +6,30 @@
     import { DEHYDRATED_ID } from "$lib/products/productTypes.js";
     import ShopProduct from "$lib/shop/ShopProduct.svelte";
     import {DEFAULT_PRODUCT} from "$lib/DefaultProduct.js";
+    import {stopPropagation} from "svelte/legacy";
 
     let categoryId: number = DEHYDRATED_ID;
 
-    let products: Product[] = [];
-    let cartProducts: CartProduct[] = [];
+    let products: Product[] = $state<Product[]>([]);
+    let cartProducts: CartProduct[] = $state<CartProduct[]>([]);
 
-    let loading = true;
+    let loading = $state(true);
 
-    let productQuantity: number = 1;
+    let productQuantity: number = $state(1);
 
-    let selectedProduct: Product = DEFAULT_PRODUCT; // Example product state
-    let showModal = false; // State to control modal visibility
-    let modalElement: HTMLElement; // Reference to the modal DOM element
-    let modalInstance: any; // Bootstrap modal instance
+    let selectedProduct: Product | null = $state<Product>(DEFAULT_PRODUCT); // Example product state
+    let showModal = $state(false); // State to control modal visibility
+    let modalElement: HTMLElement | undefined = $state(); // Reference to the modal DOM element
+    let modalInstance: any = $state(); // Bootstrap modal instance
 
-    async function toggleModal(product: Product) {
-        selectedProduct = product; // Set the selected product
-        showModal = !!product; // Show or hide the modal
+    function toggleModal(product: Product | null) {
+        if (product) {
+            selectedProduct = { ...product }; // Set the selected product
+            productQuantity = 1;
+            showModal = !!product; // Show or hide the modal
+        } else {
+            showModal = false;
+        }
 
         if (modalInstance) {
             showModal ? modalInstance.show() : modalInstance.hide();
@@ -46,6 +52,7 @@
         products = [...categoryProducts];
         loading = false;
     }
+
 
     onMount(async () => {
         load();
@@ -70,18 +77,23 @@
         aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true"
         bind:this={modalElement}
+        on:click={() => toggleModal(null)}
 >
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
+        <div class="modal-content" on:click={() => stopPropagation}>
             <div class="modal-header">
-                <img class="modal-img" src="{selectedProduct.image_url}" alt="{selectedProduct.product_name}" />
+                <img
+                        class="modal-img"
+                        src={selectedProduct?.image_url}
+                        alt={selectedProduct?.product_name}
+                />
                 <button
                         type="button"
                         class="close"
                         aria-label="Close"
                         on:click={() => toggleModal(null)}
                 >
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="false">&times;</span>
                 </button>
             </div>
 
@@ -89,8 +101,8 @@
 
                 <!-- Image and Titles-->
                 <div class="row">
-                    <h3>{capitalizeWords(selectedProduct.product_name)}</h3>
-                    <h4>${selectedProduct.price}</h4>
+                    <h3>{capitalizeWords(selectedProduct?.product_name ?? "")}</h3>
+                    <h4>${selectedProduct?.price}</h4>
                     <div class="item-tags-container">
                         {#if glutenFree}
                             <div class="item-tag">
@@ -110,7 +122,7 @@
                 <hr />
 
                 <div class="row">
-                    <p>{selectedProduct.description}</p>
+                    <p>{selectedProduct?.description}</p>
                 </div>
                 <div class="row">
                     <h4>Select Quantity:</h4>
@@ -140,12 +152,24 @@
                     </div>
 
                     <br/>
+
+
                 </div>
 
 
             </div>
             <div class="modal-footer">
-                <div class="footer-container">
+                <div class="footer-container text-white" on:click={() => {
+                        cartProducts.push({
+                            product: selectedProduct ?? DEFAULT_PRODUCT,
+                            id: crypto.randomUUID(),
+                            quantity: productQuantity,
+                        });
+                        toggleModal(null);
+                    }
+
+                }
+                >
                     <!-- Add to Cart Button -->
                     <div class="add-to-cart">
                         <p>Add to Cart</p>
@@ -156,8 +180,8 @@
 
                     <!-- Price Details -->
                     <div class="price-details">
-                        <p>${(productQuantity * selectedProduct.price).toFixed(2)}</p>
-                        <p>${selectedProduct.price.toFixed(2)} / person</p>
+                        <p>${(productQuantity * (selectedProduct?.price ?? 0)).toFixed(2)}</p>
+                        <p>${selectedProduct?.price} / item</p>
                     </div>
                 </div>
             </div>
@@ -165,21 +189,22 @@
     </div>
 </div>
 
+<!-- Products-->
 {#if !loading && products.length > 0}
     <div class="row">
-        <div class="col-xl-2"></div>
-        <div class="col-xl-10">
+        <div class="col-xl-1"></div>
+        <div class="col-xl-11">
             <div class="row">
                 <div class="col-xl-9">
                     <div class="row">
                         {#each products as product}
                             {#if product.active}
                                 <div
-                                        class="3 mb-3"
+                                        class="col-xl-6 mb-3"
                                         on:click={() => toggleModal(product)}
                                 >
                                     <ShopProduct
-                                            itemName={capitalizeWords(product.product_name)}
+                                            itemName={capitalizeWords(product?.product_name)}
                                             itemDescription={product.description}
                                             itemPrice={product.price}
                                             itemImgURL={product.image_url}
@@ -191,23 +216,65 @@
                         {/each}
                     </div>
                 </div>
-                <div class="col-xl-2">
-                    <div class="card">
-                        {#if cartProducts.length !== 0}
-                            <h3>Cart</h3>
-                            {#each cartProducts as cartProduct}
-                                <p>Item: {cartProduct.product.product_name}</p>
-                                <p>Quantity: {cartProduct.quantity}</p>
-                            {/each}
-                        {/if}
-                    </div>
+                <div class="col-xl-3 border-danger px-3 h-100">
+
+                    {#if cartProducts.length > 0}
+                        {#each cartProducts as cartProduct (cartProduct.id)}
+                            <div class="row align-items-center mb-3">
+                                <!-- Quantity -->
+                                <div class="col-1 text-center">
+                                    {cartProduct.quantity}
+                                </div>
+
+                                <!-- Product Name -->
+                                <div class="col-7">
+                                    <strong>{capitalizeWords(cartProduct.product.product_name ?? "")}</strong>
+                                    <br />
+                                </div>
+
+                                <!-- Price -->
+                                <div class="col-2 text-end">
+                                    ${cartProduct.product.price}
+                                </div>
+
+                                <!-- Remove Link -->
+                                <div class="col-2 text-end">
+                                    <a
+                                            class="text-primary"
+                                            on:click={ () =>
+                                            cartProducts = cartProducts.filter((item) => item.id !== cartProduct.id)
+                                        }
+                                    >
+                                        Remove
+                                    </a>
+                                </div>
+                                <hr />
+                            </div>
+
+                        {/each}
+                    {:else}
+                        <div class="card text-center" style="width: 100%; padding: 0">
+                            <div class="card-body">
+                                <h5 class="card-title">Special title treatment</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+
+                            </div>
+                        </div>
+                    {/if}
                 </div>
             </div>
         </div>
     </div>
 {/if}
 
+
+
 <style>
+    .modal {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+
     .modal-header {
         position: relative;
         border-top-left-radius: 5px;
@@ -215,6 +282,7 @@
         padding: 0;
         margin: 0;
         overflow: hidden; /* Ensure child elements respect the rounding */
+        transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
     .modal-content {
@@ -269,7 +337,7 @@
         background-color: #f9f9f9;
         font-size: 1.5rem;
         font-weight: bold;
-        border-radius: 4px;
+        border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s, color 0.3s;
     }
@@ -294,16 +362,18 @@
     }
 
     .modal-footer {
-
-        color: white;
+        background-color: #e64398;
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 1rem;
         border-top: none; /* Remove default border */
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
     }
 
     .footer-container {
+
         display: flex;
         width: 100%;
         align-items: center;
@@ -312,15 +382,18 @@
 
     .add-to-cart {
         font-size: 1rem;
-        font-weight: bold;
+
+        /*font-weight: bold;*/
     }
 
     .spacer {
         flex-grow: 1; /* Push items apart */
+
     }
 
     .price-details {
         text-align: right;
+
     }
 
     .price-details p {
