@@ -18,6 +18,16 @@
 
 <Navbar />
 
-<slot />
+<div class="min-h-screen flex flex-col">
+  <!-- Main Content Area -->
+  <main class="flex-grow">
+    <!-- Your page content goes here -->
+    <div class="content">
+      <!-- Example content for testing -->
+      <slot />
+    </div>
+  </main>
+</div>
+
 
 <Footer />

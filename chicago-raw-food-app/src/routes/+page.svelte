@@ -10,6 +10,8 @@
 
 <FoodCarousel />
 <OrderApps />
+<!-- 
 <BulletRow />
 <StoreLocations />
-<OtherOptions />
+<OtherOptions />  
+-->

@@ -1,50 +1,99 @@
-<script>
+<script lang="ts">
   import CarouselItem from './CarouselItem.svelte';
-  export let height = "50vh"
+
+  // Example props
+  let height: string = "50vh";
+
+  // Three sample slides
+  const slides = $state<[]>([
+    {
+      imageSrc: "/images/main-menu/carousel/img1.jpg",
+      altText: "First slide",
+      captionText: "prepared fresh daily & packaged to go"
+    },
+    {
+      imageSrc: "/images/main-menu/carousel/img2.jpg",
+      altText: "Second slide",
+      captionText: "eat living foods to energize your life"
+    },
+    {
+      imageSrc: "/images/main-menu/carousel/img3.jpg",
+      altText: "Third slide",
+      captionText: "celebrate the power of plants"
+    }
+  ]);
+
+  let activeIndex = $state(0);
+
+  function nextSlide() {
+    activeIndex = (activeIndex + 1) % slides.length;
+  }
+
+  function prevSlide() {
+    activeIndex = (activeIndex - 1 + slides.length) % slides.length;
+  }
+
+  function goToSlide(index: number) {
+    activeIndex = index;
+  }
 </script>
 
-<div class='row' style='height: {height}'>
-  <div class='col-lg-12'>
-        <div id="imageCarousel" class="carousel slide w-100" data-bs-ride="carousel">
-            <!-- Carousel Indicators -->
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-
-            <!-- Carousel Inner -->
-            <div class="carousel-inner" style='height: {height}'>
-              <CarouselItem
-                imageSrc="/images/main-menu/carousel/img1.jpg"
-                altText="First slide"
-                captionText="prepared fresh daily & packaged to go"
-                isActive={true}
-              />
-              <CarouselItem
-                imageSrc="/images/main-menu/carousel/img2.jpg"
-                altText="Second slide"
-                captionText="eat living foods to energize your life"
-              />
-              <CarouselItem
-                imageSrc="/images/main-menu/carousel/img3.jpg"
-                altText="Third slide"
-                captionText="celebrate the power of plants"
-              />
-            </div>
-
-            <!-- Carousel Controls -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
+<!-- Outer container with adjustable height -->
+<div class="relative w-full overflow-hidden" style="height: {height}">
+  
+  <!-- Slides -->
+  {#each slides as slide, index}
+    <div
+      class="absolute inset-0 transition-opacity duration-700"
+      style="opacity: {index === activeIndex ? 1 : 0}"
+    >
+      <CarouselItem
+        imageSrc={slide.imageSrc}
+        altText={slide.altText}
+        captionText={slide.captionText}
+        isActive=true
+      />
     </div>
+  {/each}
+
+  <!-- Indicators (Dots) -->
+  <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+    {#each slides as _, index}
+
+      <button
+        class="w-3 h-3 rounded-full border border-white bg-white/50 
+               hover:bg-white transition-colors"
+        aria-label="Slide {index}"
+        onclick={() => goToSlide(index)}
+      >
+      </button>
+    {/each}
+  </div>
+
+  <!-- Prev/Next Controls -->
+  <button
+    class="absolute top-1/2 left-2 -translate-y-1/2 
+           text-white bg-black/50 rounded-full p-2 
+           hover:bg-black/70 transition-colors"
+    onclick={prevSlide}
+    aria-label="Previous slide"
+  >
+    <!-- Left arrow icon -->
+    <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current">
+      <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+    </svg>
+  </button>
+
+  <button
+    class="absolute top-1/2 right-2 -translate-y-1/2 
+           text-white bg-black/50 rounded-full p-2 
+           hover:bg-black/70 transition-colors"
+    onclick={nextSlide}
+    aria-label="Next slide"
+  >
+    <!-- Right arrow icon -->
+    <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current">
+      <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+    </svg>
+  </button>
 </div>
-
-
-

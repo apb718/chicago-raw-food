@@ -1,9 +1,5 @@
 <script>
-    export let imageSource = '';
-
-    export let hrefLink = '';
-
-    export let altText = '';
+    let { imageSource, hrefLink, altText } = $props();
 </script>
 <a href={hrefLink} target='_blank' >
     <img src={imageSource} alt={altText} class='image-fluid'>

@@ -1,13 +1,12 @@
 <script lang="ts">
-
   import IconMdiInstagram from "~icons/mdi/instagram.svelte";
   import IconMdiFacebook from "~icons/mdi/facebook.svelte";
   import IconMdiTwitter from "~icons/mdi/twitter.svelte";
 </script>
 
-<footer class="w-full fixed bottom-0 left-0 text-white font-railway-thin text-base">
+<footer class="w-full bg-[lightgrey] text-white font-railway-thin text-base">
   <!-- Top Section (light grey) -->
-  <div class="bg-[lightgrey] pt-5">
+  <div class="pt-5">
     <div class="max-w-7xl mx-auto px-5 grid gap-8 md:grid-cols-3">
       <!-- Column 1: Locations -->
       <div>
@@ -68,20 +67,19 @@
         </a>
       </div>
     </div>
-    
-    <!-- Footer Bottom Row (dark grey) -->
-    <div class="bg-[darkgrey] mt-4 py-3">
-      <div class="max-w-7xl mx-auto px-5 text-center">
-        <p class="mb-0 text-black">
-          &copy; 2024 Chicago Raw Food All Rights Reserved.
-        </p>
-      </div>
+  </div>
+  
+  <!-- Footer Bottom Row (dark grey) -->
+  <div class="bg-[darkgrey] mt-4 py-3">
+    <div class="max-w-7xl mx-auto px-5 text-center">
+      <p class="mb-0 text-black">
+        &copy; 2024 Chicago Raw Food All Rights Reserved.
+      </p>
     </div>
   </div>
 </footer>
 
 <style>
-  /* Example custom font family */
   .font-railway-thin {
     font-family: railway-thin, serif;
   }
