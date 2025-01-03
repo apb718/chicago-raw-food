@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Banner from "$lib/Banner/Banner.svelte";
+    import Banner from "$lib/components/chicago-raw/banner/Banner.svelte";
     import { onMount } from "svelte";
     import { capitalizeWords } from "$lib/CapitalizeWords.js";
     import type { Product, CartProduct } from "$lib/types.js";
