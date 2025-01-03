@@ -206,7 +206,7 @@
               </li>
               <li>
                 <a
-                  class="block px-4 py-2 text-lowercase hover:bg-gray-100 hover:text-raw-pink"
+                  class="hidden block px-4 py-2 text-lowercase hover:bg-gray-100 hover:text-raw-pink"
                   href="/menu/dietary-restrictions"
                 >
                   Dietary Restrictions
@@ -214,7 +214,7 @@
               </li>
               <li>
                 <a
-                  class="block px-4 py-2 text-lowercase hover:bg-gray-100 hover:text-raw-pink"
+                  class="hidden block px-4 py-2 text-lowercase hover:bg-gray-100 hover:text-raw-pink"
                   href="/menu/crc-kosher"
                 >
                   cRc Kosher

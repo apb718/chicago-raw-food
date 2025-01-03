@@ -25,14 +25,10 @@
   ];
 </script>
 
-
 <FoodCarousel 
   items={carouselItems}
 />
 <OrderApps />
 <BulletRow />
-
 <StoreLocations />
-
-
 <OtherOptions />  
