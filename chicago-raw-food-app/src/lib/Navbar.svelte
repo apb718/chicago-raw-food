@@ -1,125 +1,309 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { browser } from '$app/environment';
+  import IconMdiAccount from "~icons/mdi/account.svelte"
+  import IconCart from "~icons/mdi/cart.svelte"
 
-  function closeDropdown(event: Event) {
-    // Find the closest dropdown and use Bootstrap's JavaScript API to close it
-    const dropdownElement = (event.target as HTMLElement).closest('.dropdown-menu');
-    if (dropdownElement) {
-      const dropdown = bootstrap.Dropdown.getInstance(dropdownElement.closest('.dropdown') as HTMLElement);
-      if (dropdown) {
-        dropdown.hide(); // Properly close the dropdown using Bootstrap's API
-      }
+  let isNavOpen = false;       // Controls mobile nav toggle
+  let isDropdownOpen = false;  // Controls "menu" dropdown
+
+  function toggleNav() {
+    isNavOpen = !isNavOpen;
+  }
+
+  function toggleDropdown() {
+    isDropdownOpen = !isDropdownOpen;
+  }
+
+  // Close the dropdown when clicking anywhere else on the page.
+  function handleClickOutside(event: MouseEvent) {
+    if (!(event.target as HTMLElement).closest('#menuDropdownContainer')) {
+      isDropdownOpen = false;
     }
   }
 
-  // Attach event listeners to all dropdown items
-  onMount(() => {
-    const dropdownItems = document.querySelectorAll('.dropdown-item');
-    dropdownItems.forEach(item => {
-      item.addEventListener('click', closeDropdown);
-    });
-
-    // Cleanup event listeners on component destruction
-    return () => {
-      dropdownItems.forEach(item => {
-        item.removeEventListener('click', closeDropdown);
-      });
-    };
-  });
+  // Listen for clicks outside the dropdown in browser
+  if (browser) {
+    document.addEventListener('click', handleClickOutside);
+  }
 </script>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white py-1">
-  <div class="container">
+<!-- NAV WRAPPER -->
+<nav class="bg-white border-b py-1">
+  <div class="container mx-auto px-4 flex items-center justify-between">
     <!-- Logo -->
-    <a class="navbar-brand" href="/">
-      <img src="/images/branding/crf-logo.svg" alt="Logo" style="height: 125px" />
+    <a href="/" class="flex items-center">
+      <img
+        src="/images/branding/crf-logo.svg"
+        alt="Logo"
+        class="h-[125px]"
+      />
     </a>
 
-    <!-- Toggler for mobile view -->
+    <!-- Mobile Toggle Button -->
     <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+      class="lg:hidden p-2 text-gray-700"
+      on:click={toggleNav}
+      aria-label="Toggle Navigation"
     >
-      <span class="navbar-toggler-icon"></span>
+      <!-- Simple Hamburger Icon (replace as desired) -->
+      <svg
+        class="w-6 h-6 fill-current"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M4 6h16M4 12h16M4 18h16"
+        />
+      </svg>
     </button>
 
-    <!-- Navbar Links -->
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link text-lowercase" href="/">home</a>
-        </li>
-        <li class="nav-item dropdown">
+    <!-- Navbar Links (Desktop + Mobile) -->
+    <div
+      class={`lg:flex lg:items-center w-full lg:w-auto transition-all duration-300 ease-in-out
+        ${isNavOpen ? 'flex' : 'hidden'}`
+      }
+    >
+      <!-- 
+        Use 'justify-end' to push items to the right,
+        'ml-auto' to separate them from the logo.
+        Decrease space-x-4 to space-x-2 for closer spacing on large screens.
+      -->
+      <ul class="flex flex-col lg:flex-row ml-auto lg:space-x-2 justify-end">
+        <!-- Home -->
+        <li>
           <a
-                  class="nav-link dropdown-toggle text-lowercase"
-                  data-toggle="dropdown"
-                  id="menuDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
+            class="inline-flex items-center px-2 py-2 text-lowercase hover:text-raw-pink"
+            href="/"
+          >
+            home
+          </a>
+        </li>
+
+        <!-- Menu Dropdown -->
+        <li
+          id="menuDropdownContainer"
+          class="relative"
+        >
+          <!-- Dropdown Trigger -->
+          <button
+            class="inline-flex items-center justify-between w-full px-2 py-2 text-lowercase hover:text-raw-pink lg:inline-block"
+            on:click={toggleDropdown}
+            aria-haspopup="true"
+            aria-expanded={isDropdownOpen}
           >
             menu
+            <!-- Dropdown caret (optional) -->
+            <svg
+              class="w-4 h-4 ml-1 fill-current"
+              viewBox="0 0 20 20"
+            >
+              <path d="M5.516 7.548a.625.625 0 0 1 .884 0L10 11.15l3.6-3.602a.625.625 0 0 1 .884.884l-4.04 4.04a.625.625 0 0 1-.884 0l-4.04-4.04a.625.625 0 0 1 0-.884z" />
+            </svg>
+          </button>
+
+          <!-- Dropdown Menu -->
+          {#if isDropdownOpen}
+            <ul
+              class="absolute left-0 mt-1 w-48 bg-white shadow-md z-50 rounded text-sm"
+              aria-labelledby="menuDropdown"
+            >
+              <li>
+                <a
+                  class="block px-4 py-2 text-lowercase hover:bg-gray-100 hover:text-raw-pink"
+                  href="/menu/minis"
+                >
+                  The Minis
+                </a>
+              </li>
+              <li>
+                <a
+                  class="block px-4 py-2 text-lowercase hover:bg-gray-100 hover:text-raw-pink"
+                  href="/menu/hot-beverages"
+                >
+                  Hot Beverages
+                </a>
+              </li>
+              <li>
+                <a
+                  class="block px-4 py-2 text-lowercase hover:bg-gray-100 hover:text-raw-pink"
+                  href="/menu/juices-elixirs"
+                >
+                  Juices & Elixirs
+                </a>
+              </li>
+              <li>
+                <a
+                  class="block px-4 py-2 text-lowercase hover:bg-gray-100 hover:text-raw-pink"
+                  href="/menu/smoothies"
+                >
+                  Smoothies
+                </a>
+              </li>
+              <li>
+                <a
+                  class="block px-4 py-2 text-lowercase hover:bg-gray-100 hover:text-raw-pink"
+                  href="/menu/bowls"
+                >
+                  Bowls
+                </a>
+              </li>
+              <li>
+                <a
+                  class="block px-4 py-2 text-lowercase hover:bg-gray-100 hover:text-raw-pink"
+                  href="/menu/entrees"
+                >
+                  Entrees
+                </a>
+              </li>
+              <li>
+                <a
+                  class="block px-4 py-2 text-lowercase hover:bg-gray-100 hover:text-raw-pink"
+                  href="/menu/sandwiches"
+                >
+                  Sandwiches
+                </a>
+              </li>
+              <li>
+                <a
+                  class="block px-4 py-2 text-lowercase hover:bg-gray-100 hover:text-raw-pink"
+                  href="/menu/salads"
+                >
+                  Salads
+                </a>
+              </li>
+              <li>
+                <a
+                  class="block px-4 py-2 text-lowercase hover:bg-gray-100 hover:text-raw-pink"
+                  href="/menu/breads-spreads"
+                >
+                  Breads & Spreads
+                </a>
+              </li>
+              <li>
+                <a
+                  class="block px-4 py-2 text-lowercase hover:bg-gray-100 hover:text-raw-pink"
+                  href="/menu/desserts"
+                >
+                  Desserts
+                </a>
+              </li>
+              <li>
+                <a
+                  class="block px-4 py-2 text-lowercase hover:bg-gray-100 hover:text-raw-pink"
+                  href="/menu/breakfast"
+                >
+                  Breakfast
+                </a>
+              </li>
+              <li>
+                <a
+                  class="block px-4 py-2 text-lowercase hover:bg-gray-100 hover:text-raw-pink"
+                  href="/menu/dehydrated-items"
+                >
+                  Dehydrated Items
+                </a>
+              </li>
+              <li>
+                <a
+                  class="block px-4 py-2 text-lowercase hover:bg-gray-100 hover:text-raw-pink"
+                  href="/menu/dietary-restrictions"
+                >
+                  Dietary Restrictions
+                </a>
+              </li>
+              <li>
+                <a
+                  class="block px-4 py-2 text-lowercase hover:bg-gray-100 hover:text-raw-pink"
+                  href="/menu/crc-kosher"
+                >
+                  cRc Kosher
+                </a>
+              </li>
+            </ul>
+          {/if}
+        </li>
+
+        <!-- Shop Retail -->
+        <li>
+          <a
+            class="inline-flex items-center px-2 py-2 text-lowercase hover:text-raw-pink"
+            href="/shop"
+          >
+            shop retail
           </a>
-          <ul class="dropdown-menu" aria-labelledby="menuDropdown">
-            <li><a class="dropdown-item" href="/menu/minis">The Minis</a></li>
-            <li><a class="dropdown-item" href="/menu/hot-beverages">Hot Beverages</a></li>
-            <li><a class="dropdown-item" href="/menu/juices-elixirs">Juices & Elixirs</a></li>
-            <li><a class="dropdown-item" href="/menu/smoothies">Smoothies</a></li>
-            <li><a class="dropdown-item" href="/menu/bowls">Bowls</a></li>
-            <li><a class="dropdown-item" href="/menu/entrees">Entrees</a></li>
-            <li><a class="dropdown-item" href="/menu/sandwiches">Sandwiches</a></li>
-            <li><a class="dropdown-item" href="/menu/salads">Salads</a></li>
-            <li><a class="dropdown-item" href="/menu/breads-spreads">Breads & Spreads</a></li>
-            <li><a class="dropdown-item" href="/menu/desserts">Desserts</a></li>
-            <li><a class="dropdown-item" href="/menu/breakfast">Breakfast</a></li>
-            <li><a class="dropdown-item" href="/menu/dehydrated-items">Dehydrated Items</a></li>
-            <li><a class="dropdown-item" href="/menu/dietary-restrictions">Dietary Restrictions</a></li>
-            <li><a class="dropdown-item" href="/menu/crc-kosher">cRc Kosher</a></li>
-          </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-lowercase" href="/shop">shop retail</a>
+
+        <!-- Weekly Takeaway -->
+        <li>
+          <a
+            class="inline-flex items-center px-2 py-2 text-lowercase hover:text-raw-pink"
+            href="/takeaway"
+          >
+            weekly takeaway
+          </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-lowercase" href="/takeaway">weekly takeaway</a>
+
+        <!-- About -->
+        <li>
+          <a
+            class="inline-flex items-center px-2 py-2 text-lowercase hover:text-raw-pink"
+            href="/about"
+          >
+            about
+          </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-lowercase" href="/about">about</a>
+
+        <!-- Gift -->
+        <li>
+          <a
+            class="inline-flex items-center px-2 py-2 text-lowercase hover:text-raw-pink"
+            href="https://squareup.com/gift/17A1XAYRBCGV7/order"
+            target="_blank"
+          >
+            gift
+          </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-lowercase" target="_blank" href="https://squareup.com/gift/17A1XAYRBCGV7/order">gift</a>
+
+        <!-- Connect -->
+        <li>
+          <a
+            class="inline-flex items-center px-2 py-2 text-lowercase hover:text-raw-pink"
+            href="/connect"
+          >
+            connect
+          </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-lowercase" href="/connect">connect</a>
+
+        <!-- Cart -->
+        <li>
+          <a 
+            href="/cart" 
+            class="inline-flex items-center px-2 py-2 text-lowercase hover:text-raw-pink"
+          >
+            <!-- Optionally constrain the icon size -->
+            <IconCart class="w-5 h-5" />
+          </a>
+        </li>
+
+        <!-- Admin -->
+        <li>
+          <a 
+            href="/admin" 
+            class="inline-flex items-center px-2 py-2 text-lowercase hover:text-raw-pink"
+          >
+            <IconMdiAccount class="w-5 h-5" />
+          </a>
         </li>
       </ul>
-
-      <!-- Cart Icon -->
-      <a href="/cart" class="nav-link ms-lg-3">
-        <i class="bi bi-cart2"></i>
-      </a>
-      <a href="/admin" class="nav-link ms-lg-3">
-        <i class="bi bi-person"></i>
-      </a>
     </div>
   </div>
 </nav>
 
 <style>
-  /*.dropdown:hover .dropdown-menu {*/
-  /*  display: block;*/
-  /*  margin-top: 0;*/
-  /*  transition: all 0.3s ease;*/
-  /*}*/
-
-  .nav-link:hover,
-  .dropdown-item:hover {
-    color: #e64398;
+  /* Tailwind will handle most styling.
+     .text-lowercase ensures link text remains lowercase. */
+  .text-lowercase {
+    text-transform: lowercase;
   }
 </style>

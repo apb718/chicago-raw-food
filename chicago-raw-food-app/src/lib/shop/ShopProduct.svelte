@@ -12,10 +12,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
+
 <div class="menu-item-card col-xl-11  m-3">
     <div class="row menu-item-content">
         <!-- Main Item Section -->
-        <div class="menu-item-info col-xl-10 m-3">
+        <div class="menu-item-info col-xl-9 m-3">
             <h3 class="item-name">{itemName}</h3>
             <h4 class="item-type">{itemType}</h4>
             <p class="item-description">{itemDescription}</p>
@@ -32,7 +33,7 @@
             </div>
         </div>
         <!-- Item Image -->
-        <div class="menu-item-image-container col-xl-2">
+        <div class="menu-item-image-container col-xl-3">
             <img src="{itemImgURL}" alt="{itemName}">
         </div>
     </div>
@@ -66,7 +67,7 @@
 
     img {
         height: 100%;
-        width: 100%;
+        width: 110%;
         object-fit: cover;
         border-top-right-radius: 8px; /* Round the top-right corner */
         border-bottom-right-radius: 8px; /* Round the bottom-right corner */
@@ -91,12 +92,16 @@
         font-size: 0.9rem;
         color: #555;
         margin-bottom: 8px;
+        height: 2.7rem;
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
 
     .item-price {
         font-size: 1rem;
         font-weight: bold;
         color: #333;
+        
     }
 
     .item-tags i {
@@ -104,4 +109,5 @@
         margin-right: 8px;
         color: green; /* Customize icon color */
     }
+
 </style>

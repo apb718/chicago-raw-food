@@ -1,68 +1,88 @@
-<footer class="text-light">
-  <div class="container-fluid footer-color pt-5">
-    <div class="row px-5">
+<script lang="ts">
+
+  import IconMdiInstagram from "~icons/mdi/instagram.svelte";
+  import IconMdiFacebook from "~icons/mdi/facebook.svelte";
+  import IconMdiTwitter from "~icons/mdi/twitter.svelte";
+</script>
+
+<footer class="w-full fixed bottom-0 left-0 text-white font-railway-thin text-base">
+  <!-- Top Section (light grey) -->
+  <div class="bg-[lightgrey] pt-5">
+    <div class="max-w-7xl mx-auto px-5 grid gap-8 md:grid-cols-3">
       <!-- Column 1: Locations -->
-      <div class="col-md-4">
-        <h5 class="fw-bold">OUR LOCATIONS</h5>
-        <p>
+      <div>
+        <h5 class="font-bold text-black mb-2">OUR LOCATIONS</h5>
+        <p class="text-black">
           <strong>51 W Huron St, Chicago, IL 60654</strong><br />
           Open Daily 8AM–8PM
         </p>
-        <p>
+        <p class="mt-3 text-black">
           <strong>325 N Hoyne Suite 323, Chicago, IL 60612</strong><br />
           Commercial Kitchen Open Daily 6:30AM–1:30PM
         </p>
       </div>
 
       <!-- Column 2: Quick Links -->
-      <div class="col-md-4">
-        <h5 class="fw-bold">QUICK LINKS</h5>
-        <ul class="list-unstyled">
-          <li><a href="/" class="text-decoration-none text-light">Home</a></li>
-          <li><a href="/menu" class="text-decoration-none text-light">Menu</a></li>
-          <li><a href="/about" class="text-decoration-none text-light">About</a></li>
-          <li><a href="/weekly-takeaway" class="text-decoration-none text-light">Weekly Takeaway</a></li>
-          <li><a href="/menu-gallery" class="text-decoration-none text-light">Menu Gallery</a></li>
-          <li><a href="/online-shop" class="text-decoration-none text-light">Online Shop</a></li>
-          <li><a href="/contact" class="text-decoration-none text-light">Contact</a></li>
+      <div>
+        <h5 class="font-bold text-black mb-2">QUICK LINKS</h5>
+        <ul class="space-y-1">
+          <li><a href="/" class="hover:underline text-black">Home</a></li>
+          <li><a href="/menu" class="hover:underline text-black">Menu</a></li>
+          <li><a href="/about" class="hover:underline text-black">About</a></li>
+          <li><a href="/weekly-takeaway" class="hover:underline text-black">Weekly Takeaway</a></li>
+          <li><a href="/menu-gallery" class="hover:underline text-black">Menu Gallery</a></li>
+          <li><a href="/online-shop" class="hover:underline text-black">Online Shop</a></li>
+          <li><a href="/contact" class="hover:underline text-black">Contact</a></li>
         </ul>
       </div>
 
       <!-- Column 3: Social Links -->
-      <div class="col-md-4 text-center">
-        <h5 class="fw-bold">FOLLOW US</h5>
-        <a href="https://instagram.com" target="_blank" class="text-light me-3" aria-label='Instagram'>
-          <i class="bi bi-instagram fs-4"></i>
+      <div class="text-center">
+        <h5 class="font-bold text-black mb-3">FOLLOW US</h5>
+        <!-- Instagram -->
+        <a
+          href="https://instagram.com"
+          target="_blank"
+          class="inline-block text-black mr-4 hover:text-neutral-700"
+          aria-label="Instagram"
+        >
+          <IconMdiInstagram class="w-6 h-6 hover:text-raw-pink" />
         </a>
-        <a href="https://facebook.com" target="_blank" class="text-light me-3" aria-label='Facebook'> 
-          <i class="bi bi-facebook fs-4"></i>
+        <!-- Facebook -->
+        <a
+          href="https://facebook.com"
+          target="_blank"
+          class="inline-block text-black mr-4 hover:text-neutral-700"
+          aria-label="Facebook"
+        >
+          <IconMdiFacebook class="w-6 h-6 hover:text-raw-pink" />
         </a>
-        <a href="https://twitter.com" target="_blank" class="text-light" aria-label='Twitter'>
-          <i class="bi bi-twitter fs-4"></i>
+        <!-- Twitter -->
+        <a
+          href="https://twitter.com"
+          target="_blank"
+          class="inline-block text-black hover:text-neutral-700"
+          aria-label="Twitter"
+        >
+          <IconMdiTwitter class="w-6 h-6 hover:text-raw-pink" />
         </a>
       </div>
     </div>
-
-    <!-- Footer Bottom Row -->
-    <div class="row mt-4 footer-second-color py-3">
-      <div class="col text-center">
-        <p class="mb-0">&copy; 2024 Chicago Raw Food All Rights Reserved.</p>
+    
+    <!-- Footer Bottom Row (dark grey) -->
+    <div class="bg-[darkgrey] mt-4 py-3">
+      <div class="max-w-7xl mx-auto px-5 text-center">
+        <p class="mb-0 text-black">
+          &copy; 2024 Chicago Raw Food All Rights Reserved.
+        </p>
       </div>
     </div>
   </div>
 </footer>
 
-
 <style>
-  .footer-second-color {
-    background-color: darkgrey;
-  }
-  .footer-color {
-    background-color: lightgrey;
-  }
-  * {
-    font-size: medium;
+  /* Example custom font family */
+  .font-railway-thin {
     font-family: railway-thin, serif;
   }
-
 </style>
