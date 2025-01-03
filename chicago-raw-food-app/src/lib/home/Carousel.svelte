@@ -1,27 +1,11 @@
 <script lang="ts">
   import CarouselItem from './CarouselItem.svelte';
 
-  // Example props
-  let height: string = "50vh";
 
-  // Three sample slides
-  const slides = $state<[]>([
-    {
-      imageSrc: "/images/main-menu/carousel/img1.jpg",
-      altText: "First slide",
-      captionText: "prepared fresh daily & packaged to go"
-    },
-    {
-      imageSrc: "/images/main-menu/carousel/img2.jpg",
-      altText: "Second slide",
-      captionText: "eat living foods to energize your life"
-    },
-    {
-      imageSrc: "/images/main-menu/carousel/img3.jpg",
-      altText: "Third slide",
-      captionText: "celebrate the power of plants"
-    }
-  ]);
+  const { height ='50vh', items } = $props();
+  // Example 
+  
+  const slides = $state(items);
 
   let activeIndex = $state(0);
 

@@ -1,8 +1,12 @@
 <script>
-    export let text='';
+  const { text = '' } = $props();
 </script>
 
-<div class='col-xl-2 center-text pt-3 px-5'>
-    <i class='bi bi-circle-fill text-green fs-3'></i>
-    <p class='fw-bold fs-5 mt-3'>{text}</p>
+<div class="w-full max-w-xs text-center pt-3 px-5">
+  <!-- Bullet Icon -->
+  <div class="flex justify-center">
+    <div class="w-6 h-6 bg-raw-green rounded-full"></div>
+  </div>
+  <!-- Bullet Text -->
+  <p class="font-bold text-lg mt-3">{text}</p>
 </div>

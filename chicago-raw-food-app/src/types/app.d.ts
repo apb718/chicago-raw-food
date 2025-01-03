@@ -16,6 +16,12 @@ declare global {
 			imageUrl?: string | null;
 			active: boolean;
 		};
+
+		type CarouselItem = {
+			imageSrc:  string,
+      		altText: string,
+      		captionText: string
+		}
 	}
 }
 

@@ -1,18 +1,15 @@
 <script>
-    export let locationName = ""
-    export let address = ""
-    export let days=""
-    export let startTime=""
-    export let endTime=""
-</script>
-
-<div class="col-xl-3 bg-green rounded d-flex align-items-center justify-content-center ">
-    <div>
-        <h4>{locationName}</h4>
-        <p class='para-text'>{address}</p>
-        <br>
-        <p >{days}</p>
-        <p class='para-text' >{startTime} - {endTime}</p>
+    const { locationName, address, days, startTime, endTime } = $props();
+  </script>
+  
+  <div class="bg-raw-green  rounded-lg flex items-center justify-center py-6 px-4 max-w-2xl mx-auto">
+    <div class="text-center">
+      <h4 class="text-xl font-bold text-black">{locationName}</h4>
+      <p class="text-sm text-black">{address}</p>
+      <div class="mt-4">
+        <p class="text-md font-semibold text-black">{days}</p>
+        <p class="text-sm text-black">{startTime} - {endTime}</p>
+      </div>
     </div>
-</div>
-
+  </div>
+  

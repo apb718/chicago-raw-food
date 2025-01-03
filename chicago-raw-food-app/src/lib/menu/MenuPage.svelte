@@ -1,25 +1,17 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import { slide } from "svelte/transition"
+    import { slide } from "svelte/transition";
     import { capitalizeWords } from "$lib/CapitalizeWords.js";
-    import {removeTrailingZeroes} from "$lib/removeTrailingZeroes.js";
+    import { removeTrailingZeroes } from "$lib/removeTrailingZeroes.js";
+    import { Card, CardHeader, CardTitle, CardContent } from "$lib/components/ui/card";
+    import type Product from "$lib/types.js";
 
-    type Product = {
-        product_id: number;
-        product_type_id: number;
-        type_description: string;
-        product_name: string;
-        price: number;
-        description: string;
-        imageUrl?: string | null;
-        active: boolean;
-    };
+    let { categoryIds } = $props();
 
-    export let categoryIds: number[];
-    let products: Product[] = [];
-    let displayedTypes: Set<string> = new Set();
-    let allTypes: Set<string> = new Set();
-    let isLoaded = false;
+    let products: Product[] = $state<Product[]>([]);
+    let displayedTypes: Set<string> = $state(new Set());
+    let allTypes: Set<string> = $state(new Set());
+    let isLoaded = $state(false);
 
     async function load() {
         const apiUrl = "/api/v1/menu/";
@@ -41,38 +33,36 @@
 
 <!-- Render Products -->
 {#if isLoaded && products.length > 0}
-
     <section
-            class="animated-section"
-            in:slide={{ duration: 400 }}
+        class="container mx-auto p-6 grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+        in:slide={{ duration: 400 }}
     >
-
         {#each products as product (product.product_id)}
             {#if !displayedTypes.has(product.type_description)}
-                <h1 class="center-text text-strong-pink">{product.type_description}</h1>
+                <h2 class="col-span-full text-center text-2xl font-bold text-pink-500">
+                    {product.type_description}
+                </h2>
                 {@html (() => { displayedTypes.add(product.type_description); })()}
             {/if}
 
-            <div class="mb-5">
-                <p class="center-text text-strong-green">{capitalizeWords(product.product_name)} </p>
-                <p class="center-text" style="margin-top: -15px">{removeTrailingZeroes(product.price)}</p>
-                <p class="center-text" style="margin-top: -15px">{product.description}</p>
-            </div>
+            <!-- Product Card -->
+            <Card>
+                <CardHeader>
+                    <CardTitle class="text-lg text-green-600 font-semibold">
+                        {capitalizeWords(product.product_name)}
+                    </CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p class="text-gray-700 text-sm">
+                        Price: ${removeTrailingZeroes(product.price)}
+                    </p>
+                    <p class="text-gray-600 mt-2 text-sm">
+                        {product.description}
+                    </p>
+                </CardContent>
+            </Card>
         {/each}
     </section>
 {:else}
-    <p>Loading or no products available...</p>
+    <p class="text-center text-gray-500 mt-6">Loading or no products available...</p>
 {/if}
-
-
-<style>
-    /*section.animated-section {*/
-    /*    margin: 2rem auto;*/
-    /*    padding: 1rem;*/
-    /*    max-width: 600px;*/
-    /*    background-color: #f9f9f9;*/
-    /*    border: 1px solid #ddd;*/
-    /*    border-radius: 8px;*/
-    /*    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
-    /*}*/
-</style>
