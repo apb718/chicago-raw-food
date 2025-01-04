@@ -1,8 +1,14 @@
 <script lang="ts">
-    export let title: string;
-    export let description: string = '';
-    export let actionText: string = 'Action';
-    export let pageAction: () => void; // Function to be called when the button is clicked
+    let { 
+        title = '',
+        description = '',
+        actionText = 'Action',
+        pageAction = () => {
+            return async ({ update }) => {
+                await update()
+            }
+        },
+    } = $props();
 </script>
 
 <div class="card">

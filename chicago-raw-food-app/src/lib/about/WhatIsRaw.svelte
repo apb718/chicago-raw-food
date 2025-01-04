@@ -21,7 +21,7 @@
         <!-- Is Raw for Me Section -->
         <div class="grid grid-cols-1 xl:grid-cols-12 gap-4">
             <div class="xl:col-span-4">
-                <h3 class="text-2xl font-bold text-pink-500">Is Raw for Me?</h3>
+                <h3 class="text-2xl font-bold text-raw-pink">Is Raw for Me?</h3>
             </div>
             <div class="xl:col-span-8">
                 <p class="font-raleway text-gray-700 leading-relaxed">

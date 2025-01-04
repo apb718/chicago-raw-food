@@ -1,6 +1,6 @@
 <script lang="ts">
     export let itemName: string = "";
-    export let itemType: string = ""; // extra descriptor
+    export let itemType: string = "";
     export let itemDescription: string = "";
     export let itemImgURL: string = "";
     export let itemPrice: number | null = null;
@@ -8,106 +8,33 @@
     export let vegan: boolean = false;
 </script>
 
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
+<div class="p-4 border rounded-lg shadow-lg flex">
+    <!-- Image Section -->
+    <div class="flex-shrink-0">
+        <img src={itemImgURL} alt={itemName} class="h-24 w-24 object-cover rounded-lg" />
+    </div>
 
-
-<div class="menu-item-card col-xl-11  m-3">
-    <div class="row menu-item-content">
-        <!-- Main Item Section -->
-        <div class="menu-item-info col-xl-9 m-3">
-            <h3 class="item-name">{itemName}</h3>
-            <h4 class="item-type">{itemType}</h4>
-            <p class="item-description">{itemDescription}</p>
-            {#if itemPrice}
-                <p class="item-price">${itemPrice}</p>
+    <!-- Info Section -->
+    <div class="ml-4 flex-grow">
+        <h3 class="text-lg font-semibold">{itemName}</h3>
+        <h4 class="text-sm text-gray-500">{itemType}</h4>
+        <p class="text-sm text-gray-700 line-clamp-3">{itemDescription}</p>
+        {#if itemPrice}
+            <p class="mt-2 text-lg font-bold text-gray-900">${itemPrice}</p>
+        {/if}
+        <div class="mt-2 flex items-center gap-2">
+            {#if glutenFree}
+                <span class="inline-flex items-center gap-1 text-green-600">
+                    <i class="fas fa-wheat-awn"></i>
+                    <span class="text-xs">Gluten-Free</span>
+                </span>
             {/if}
-            <div class="item-tags">
-                {#if glutenFree}
-                    <i class="fas fa-wheat-awn text-green" aria-label="Gluten-Free"></i>
-                {/if}
-                {#if vegan}
-                    <i class="fas fa-leaf text-green" aria-label="Vegan"></i>
-                {/if}
-            </div>
-        </div>
-        <!-- Item Image -->
-        <div class="menu-item-image-container col-xl-3">
-            <img src="{itemImgURL}" alt="{itemName}">
+            {#if vegan}
+                <span class="inline-flex items-center gap-1 text-green-600">
+                    <i class="fas fa-leaf"></i>
+                    <span class="text-xs">Vegan</span>
+                </span>
+            {/if}
         </div>
     </div>
 </div>
-
-<style>
-    .menu-item-card {
-        background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .menu-item-content {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-    }
-
-    .menu-item-info {
-        flex: 3;
-        padding-right: 16px;
-    }
-
-    .menu-item-image-container {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end; /* Aligns image to the right edge */
-    }
-
-    img {
-        height: 100%;
-        width: 110%;
-        object-fit: cover;
-        border-top-right-radius: 8px; /* Round the top-right corner */
-        border-bottom-right-radius: 8px; /* Round the bottom-right corner */
-        border-top-left-radius: 0; /* Keep the top-left corner straight */
-        border-bottom-left-radius: 0; /* Keep the bottom-left corner straight */
-        transform: translate(36px)
-    }
-
-    .item-name {
-        font-size: 1.2rem;
-        font-weight: bold;
-        margin: 0;
-    }
-
-    .item-type {
-        font-size: 1rem;
-        color: #888;
-        margin: 4px 0;
-    }
-
-    .item-description {
-        font-size: 0.9rem;
-        color: #555;
-        margin-bottom: 8px;
-        height: 2.7rem;
-        text-overflow: ellipsis;
-        overflow: hidden;
-    }
-
-    .item-price {
-        font-size: 1rem;
-        font-weight: bold;
-        color: #333;
-        
-    }
-
-    .item-tags i {
-        font-size: 0.9rem;
-        margin-right: 8px;
-        color: green; /* Customize icon color */
-    }
-
-</style>

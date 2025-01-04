@@ -1,5 +1,4 @@
 <script>
-  import AboutBanner from '$lib/about/AboutBanner.svelte';
   import OurStory from '$lib/about/OurStory.svelte';
   import MargoBanner from "$lib/about/MargoBanner.svelte";
   import PollyBanner from "$lib/about/PollyBanner.svelte";
@@ -13,6 +12,7 @@
 
 <Banner 
   imageUrl="/images/aboutus/banner/AboutUsBanner.jpg"
+  text=""
 />
 <OurStory />
 <PollyBanner />
