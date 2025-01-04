@@ -63,8 +63,8 @@
                                     src={selectedProduct?.image_url} alt={selectedProduct?.product_name}
                                     class='m-0 p-0 '    
                                 />
-                                <Dialog.Title>{capitalizeWords(selectedProduct?.product_name ?? "")}</Dialog.Title>
-                                <Dialog.Description>{selectedProduct?.description}</Dialog.Description>
+                                <Dialog.Title class="m-5">{capitalizeWords(selectedProduct?.product_name ?? "")}</Dialog.Title>
+                                <Dialog.Description class="m-5">{selectedProduct?.description}</Dialog.Description>
                             </Dialog.Header>
                             
                             <div class="space-y-4 m-5">
