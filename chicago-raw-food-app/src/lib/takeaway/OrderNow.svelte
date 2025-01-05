@@ -1,17 +1,18 @@
-<div class="row">
-    <div class="col-xl-2"></div>
-    <div class="col-xl-8">
-        <section class="text-center py-5 bg-light">
-            <div class="container">
-                <h2 class="display-4 fw-bold mb-4 text-strong-pink raleway">Ready to Place Your Order?</h2>
-                <p class="lead mb-4 raleway">
-                    Choose your favorite entrees, appetizers, and breakfast items for a convenient, plant-based week. Don't forget, orders over $175 get a 10% discount!
+<div class="flex justify-center">
+    <div class="w-full max-w-5xl">
+        <section class="text-center py-10 bg-gray-100 rounded-lg shadow-md">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-pink-500 mb-6 raleway">
+                    Ready to Place Your Order?
+                </h2>
+                <p class="text-lg text-gray-700 mb-6 raleway">
+                    Choose your favorite entrees, appetizers, and breakfast items for a convenient, plant-based week. Don't forget, orders over $175 get a 
+                    <span class="text-pink-500 font-semibold">10% discount!</span>
                 </p>
-                <a href="/order-takeaway" class="btn btn-outline-secondary btn-lg raleway">
+                <a href="/order-takeaway" class="inline-block px-6 py-3 border border-gray-500 text-gray-700 hover:bg-gray-200 hover:text-gray-900 font-medium text-lg rounded-lg raleway">
                     Place Your Order Now
                 </a>
             </div>
         </section>
     </div>
-    <div class="col-xl-2"></div>
 </div>
