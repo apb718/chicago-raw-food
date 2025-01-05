@@ -25,7 +25,7 @@
       <div>
         <h5 class="font-bold text-black mb-2">QUICK LINKS</h5>
         <ul class="space-y-1">
-          <li><a href="/" class="hover:underline text-black">Home</a></li>
+          <li><a href="/chicago-raw-food-app/static" class="hover:underline text-black">Home</a></li>
           <li><a href="/menu" class="hover:underline text-black">Menu</a></li>
           <li><a href="/about" class="hover:underline text-black">About</a></li>
           <li><a href="/weekly-takeaway" class="hover:underline text-black">Weekly Takeaway</a></li>

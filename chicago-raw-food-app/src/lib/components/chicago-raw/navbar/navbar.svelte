@@ -31,7 +31,7 @@
 <nav class="bg-white border-b py-1">
   <div class="container mx-auto px-4 flex items-center justify-between">
     <!-- Logo -->
-    <a href="/" class="flex items-center">
+    <a href="/chicago-raw-food-app/static" class="flex items-center">
       <img
         src="/images/branding/crf-logo.svg"
         alt="Logo"
@@ -74,7 +74,7 @@
         <li>
           <a
             class="inline-flex items-center px-2 py-2 text-lowercase hover:text-raw-pink"
-            href="/"
+            href="/chicago-raw-food-app/static"
           >
             home
           </a>

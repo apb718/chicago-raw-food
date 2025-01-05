@@ -1,8 +1,8 @@
 
 <script>
   import {browser} from '$app/environment'; // Detect if running in the browser
-  import Navbar from '$lib/Navbar.svelte';
-  import Footer from '$lib/Footer.svelte';
+  import Navbar from '$lib/components/chicago-raw/navbar/navbar.svelte';
+  import Footer from '$lib/components/chicago-raw/footer/footer.svelte';
 
   import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
   import "../app.css";
