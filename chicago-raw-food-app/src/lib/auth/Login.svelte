@@ -2,7 +2,7 @@
     import { goto } from "$app/navigation";
     import { page } from "$app/stores";
     import { get } from "svelte/store";
-    import Button  from "$lib/components/ui/button/Button.svelte";
+    import Button  from "$lib/components/ui/button/button.svelte";
 
 
     import EmailInput from "$lib/components/chicago-raw/login/EmailInput.svelte";
