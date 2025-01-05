@@ -1,86 +1,84 @@
-<!-- Contact Form -->
-<div class="row bg-pink">
-    <div class="col-xl-3"></div>
-    <div id="contact-form" class="col-xl-6 my-5 px-5">
-        <h2 class="text-center mb-4" style="color: white;">Contact Us</h2>
+<div class="bg-raw-pink py-10">
+    <div class="container mx-auto max-w-3xl px-6">
+        <h2 class="text-center text-3xl font-bold text-white mb-6">Contact Us</h2>
         <form
-                method="POST"
-                action="/api/v1/contact"
-                class="needs-validation"
-                novalidate
+            method="POST"
+            action="/api/v1/contact"
+            class="space-y-6"
+            novalidate
         >
-            <div class="row">
-                <div class="mb-3 col-xl-6">
-                    <label for="fname" class="form-label">First Name</label>
+            <!-- First and Last Name -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="fname" class="block text-sm font-medium text-white mb-2">First Name</label>
                     <input
-                            type="text"
-                            class="form-control"
-                            id="fname"
-                            name="fname"
-                            required
+                        type="text"
+                        id="fname"
+                        name="fname"
+                        required
+                        class="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500"
                     />
-                    <div class="invalid-feedback">Please provide your first name.</div>
+                    <div class="text-sm text-red-500 mt-1 hidden">Please provide your first name.</div>
                 </div>
-                <div class="mb-3 col-xl-6">
-                    <label for="lname" class="form-label">Last Name</label>
+                <div>
+                    <label for="lname" class="block text-sm font-medium text-white mb-2">Last Name</label>
                     <input
-                            type="text"
-                            class="form-control"
-                            id="lname"
-                            name="lname"
-                            required
+                        type="text"
+                        id="lname"
+                        name="lname"
+                        required
+                        class="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500"
                     />
-                    <div class="invalid-feedback">Please provide your last name.</div>
+                    <div class="text-sm text-red-500 mt-1 hidden">Please provide your last name.</div>
                 </div>
             </div>
 
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
+            <!-- Email -->
+            <div>
+                <label for="email" class="block text-sm font-medium text-white mb-2">Email</label>
                 <input
-                        type="email"
-                        class="form-control"
-                        id="email"
-                        name="email"
-                        required
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    class="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500"
                 />
-                <div class="invalid-feedback">Please provide a valid email address.</div>
+                <div class="text-sm text-red-500 mt-1 hidden">Please provide a valid email address.</div>
             </div>
-            <div class="mb-3">
-                <label for="phone" class="form-label">Phone</label>
+
+            <!-- Phone -->
+            <div>
+                <label for="phone" class="block text-sm font-medium text-white mb-2">Phone</label>
                 <input
-                        type="phone"
-                        class="form-control"
-                        id="phone"
-                        name="phone"
-                        required
+                    type="text"
+                    id="phone"
+                    name="phone"
+                    required
+                    class="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500"
                 />
-                <div class="invalid-feedback">Please provide a valid email address.</div>
+                <div class="text-sm text-red-500 mt-1 hidden">Please provide a valid phone number.</div>
             </div>
-            <div class="mb-3">
-                <label for="message" class="form-label">Message</label>
+
+            <!-- Message -->
+            <div>
+                <label for="message" class="block text-sm font-medium text-white mb-2">Message</label>
                 <textarea
-                        class="form-control"
-                        id="message"
-                        name="message"
-                        rows="4"
-                        required
+                    id="message"
+                    name="message"
+                    rows="4"
+                    required
+                    class="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500"
                 ></textarea>
-                <div class="invalid-feedback">Please provide a message.</div>
+                <div class="text-sm text-red-500 mt-1 hidden">Please provide a message.</div>
             </div>
+
+            <!-- Submit Button -->
             <button
-                    type="submit"
-                    class="btn btn-primary w-100 "
-                    style="background-color: #b4d784; color: #e64398; font-weight: bold; border: none;"
+                type="submit"
+                class="w-full py-3 bg-raw-green text-pink-500 font-bold rounded-lg hover:bg-green-500 focus:ring-4 focus:ring-pink-500 focus:ring-opacity-50"
             >
                 Submit
             </button>
         </form>
     </div>
-    <div class="col-xl-3"></div>
 </div>
-
-<style>
-    label {
-        color: white;
-    }
-</style>
