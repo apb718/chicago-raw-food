@@ -3,7 +3,7 @@
     <div class="hidden xl:block xl:col-span-3"></div>
 
     <!-- Main Content -->
-    <div class="xl:col-span-6">
+    <div class="xl:col-span-6 ">
         <div class="grid md:grid-cols-12 items-center gap-6">
             <!-- Image Section -->
             <div class="md:col-span-4 text-center">

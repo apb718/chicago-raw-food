@@ -56,6 +56,8 @@
 	},
 	"dependencies": {
 		"@fortawesome/fontawesome-free": "^6.7.1",
+		"@radix-ui/react-select": "^2.1.4",
+		"@radix-ui/react-slot": "^1.1.1",
 		"@sveltejs/adapter-vercel": "^5.5.2",
 		"@sveltestrap/sveltestrap": "^6.2.7",
 		"@vercel/speed-insights": "^1.1.0",
@@ -63,13 +65,17 @@
 		"bootstrap": "^5.3.3",
 		"bootstrap-icons": "^1.11.3",
 		"chicago-raw-food": "file:",
+		"class-variance-authority": "^0.7.1",
 		"connect-redis": "^8.0.1",
 		"dotenv": "^16.4.7",
 		"express-session": "^1.18.1",
 		"flowbite-svelte": "^0.47.3",
 		"jsonwebtoken": "^9.0.2",
+		"lucide-react": "^0.469.0",
 		"mysql2": "^3.11.5",
 		"nodemailer": "^6.9.16",
+		"svelte-radix": "^2.0.1",
+		"tailwindcss-animate": "^1.0.7",
 		"uuid": "^11.0.3"
 	}
 }

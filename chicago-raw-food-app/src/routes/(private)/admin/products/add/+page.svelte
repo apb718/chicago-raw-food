@@ -1,5 +1,5 @@
 <script lang="ts">
-    let product_type_ids: string[] = []; // Update to handle multiple product types
+    let product_type_ids: string[] = [];
     let product_name: string = '';
     let price: number | null = null;
     let description: string = '';
@@ -30,7 +30,7 @@
 
         try {
             const response = await fetch('/api/v1/products/add', {
-                method: 'PUT', // Ensure this matches your API
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -68,58 +68,90 @@
     }
 </script>
 
-<div class="container mt-5">
-    <h1 class="text-center mb-4">Add New Product</h1>
-    <form on:submit|preventDefault={handleSubmit}>
-        <div class="mb-3">
-            <label class="form-label">Product Types</label>
-            <div class="d-flex flex-wrap">
+<div class="mx-auto max-w-3xl p-6 space-y-6">
+    <h1 class="text-center text-2xl font-bold mb-6">Add New Product</h1>
+    <form on:submit|preventDefault={handleSubmit} class="space-y-4">
+        <!-- Product Types -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Product Types</label>
+            <div class="flex flex-wrap gap-3">
                 {#each productTypes as { id, name }}
-                    <div class="form-check me-3">
+                    <div class="flex items-center space-x-2">
                         <input
-                                class="form-check-input"
-                                type="checkbox"
-                                id={"product_type_" + id}
-                                value={id}
-                                bind:group={product_type_ids}
+                            type="checkbox"
+                            id={"product_type_" + id}
+                            value={id}
+                            bind:group={product_type_ids}
+                            class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                         />
-                        <label class="form-check-label" for={"product_type_" + id}>{name}</label>
+                        <label for={"product_type_" + id} class="text-sm text-gray-700">{name}</label>
                     </div>
                 {/each}
             </div>
         </div>
 
-        <div class="mb-3">
-            <label for="product_name" class="form-label">Product Name</label>
-            <input type="text" id="product_name" class="form-control" bind:value={product_name} required />
+        <div>
+            <label for="product_name" class="block text-sm font-medium text-gray-700">Product Name</label>
+            <input
+                type="text"
+                id="product_name"
+                bind:value={product_name}
+                required
+                class="mt-1 block w-full rounded-lg border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+            />
+        </div>
+        
+        <div>
+            <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
+            <input
+                type="number"
+                id="price"
+                bind:value={price}
+                step="0.01"
+                required
+                class="mt-1 block w-full rounded-lg border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+            />
+        </div>
+        
+        <div>
+            <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+            <textarea
+                id="description"
+                bind:value={description}
+                rows="4"
+                class="mt-1 block w-full rounded-lg border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+            ></textarea>
+        </div>
+        
+        <div>
+            <label for="image_url" class="block text-sm font-medium text-gray-700">Image URL</label>
+            <input
+                type="text"
+                id="image_url"
+                bind:value={image_url}
+                class="mt-1 block w-full rounded-lg border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+            />
         </div>
 
-        <div class="mb-3">
-            <label for="price" class="form-label">Price</label>
-            <input type="number" id="price" class="form-control" bind:value={price} step="0.01" required />
+        <!-- Active -->
+        <div class="flex items-center">
+            <input
+                type="checkbox"
+                id="active"
+                bind:checked={active}
+                class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+            />
+            <label for="active" class="ml-2 text-sm text-gray-700">Active</label>
         </div>
 
-        <div class="mb-3">
-            <label for="description" class="form-label">Description</label>
-            <textarea id="description" class="form-control" bind:value={description} rows="4"></textarea>
+        <!-- Submit Button -->
+        <div>
+            <button
+                type="submit"
+                class="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            >
+                Add Product
+            </button>
         </div>
-
-        <div class="mb-3">
-            <label for="image_url" class="form-label">Image URL</label>
-            <input type="text" id="image_url" class="form-control" bind:value={image_url} />
-        </div>
-
-        <div class="mb-3 form-check">
-            <input type="checkbox" id="active" class="form-check-input" bind:checked={active} />
-            <label for="active" class="form-check-label">Active</label>
-        </div>
-
-        <button type="submit" class="btn btn-primary w-100">Add Product</button>
     </form>
 </div>
-
-<style>
-    .container {
-        max-width: 600px;
-    }
-</style>

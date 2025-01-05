@@ -1,21 +1,39 @@
 <script>
-    import AdminLinkCard from "\$lib/admin/adminLinkCard.svelte";
-    import {goto} from "$app/navigation";
+    import { goto } from "$app/navigation";
+    import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "$lib/components/ui/card";
+    import Button from "$lib/components/ui/button/button.svelte"
 </script>
 
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+    <!-- Add User Card -->
+    <Card>
+        <CardHeader>
+            <CardTitle>Add User</CardTitle>
+            <CardDescription>Create a new user in the system</CardDescription>
+        </CardHeader>
+        <CardContent>
+            <p>Use this feature to add new users to the platform.</p>
+        </CardContent>
+        <CardFooter class="flex justify-end">
+            <Button onclick={() => goto('/admin/addUser')} variant="default">
+                Go to Add User
+            </Button>
+        </CardFooter>
+    </Card>
 
-<div class="col-xl-8">
-    <AdminLinkCard
-            title="Add User"
-            description="Create a new user in the system"
-            actionText="Go to Add User"
-            pageAction={() => goto('/admin/addUser')}
-    />
-    <AdminLinkCard
-        title="Manage Products"
-        description="Manage Products"
-        actionText="Go to Products"
-        pageAction={() => goto('/admin/products')}
-    />
+    <!-- Manage Products Card -->
+    <Card>
+        <CardHeader>
+            <CardTitle>Manage Products</CardTitle>
+            <CardDescription>Manage Products in the system</CardDescription>
+        </CardHeader>
+        <CardContent>
+            <p>Access tools to manage and update product details.</p>
+        </CardContent>
+        <CardFooter class="flex justify-end">
+            <Button onclick={() => goto('/admin/products')} variant="default">
+                Go to Products
+            </Button>
+        </CardFooter>
+    </Card>
 </div>
-<div class="col-xl-4"></div>

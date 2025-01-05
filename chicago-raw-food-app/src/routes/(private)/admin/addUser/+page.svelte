@@ -1,5 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "$lib/components/ui/card";
+    import Button from "$lib/components/ui/button/button.svelte";
 
     let email: string = '';
     let password: string = '';
@@ -55,74 +57,58 @@
     }
 </script>
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow">
-                <div class="card-header text-center bg-primary text-white">
-                    <h3>Add User</h3>
+<div class="flex justify-center mt-10">
+    <Card class="w-full max-w-lg shadow-lg">
+        <CardHeader class="text-center">
+            <CardTitle class="text-xl font-bold">Add User</CardTitle>
+        </CardHeader>
+        <CardContent>
+            <form on:submit|preventDefault={handleSubmit} class="space-y-4">
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        bind:value={email}
+                        required
+                        placeholder="Enter user email"
+                    />
                 </div>
-                <div class="card-body">
-                    <form on:submit|preventDefault={handleSubmit}>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input
-                                    type="email"
-                                    id="email"
-                                    class="form-control"
-                                    bind:value={email}
-                                    required
-                                    placeholder="Enter user email"
-                            />
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input
-                                    type="password"
-                                    id="password"
-                                    class="form-control"
-                                    bind:value={password}
-                                    required
-                                    placeholder="Enter user password"
-                            />
-                        </div>
-                        <div class="mb-3">
-                            <label for="admin" class="form-label">Admin</label>
-                            <select id="admin" class="form-select" bind:value={admin}>
-                                <option value="0">0 - Regular User</option>
-                                <option value="1">1 - Moderator</option>
-                                <option value="2">2 - Administrator</option>
-                            </select>
-                        </div>
-                        {#if formError}
-                            <div class="alert alert-danger" role="alert">
-                                {formError}
-                            </div>
-                        {/if}
-                        <button type="submit" class="btn btn-primary w-100">Add User</button>
-                    </form>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        bind:value={password}
+                        required
+                        placeholder="Enter user password"
+                    />
                 </div>
-            </div>
-        </div>
-    </div>
+                <div>
+                    <label for="admin" class="block text-sm font-medium text-gray-700">Admin</label>
+                    <select
+                        id="admin"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        bind:value={admin}
+                    >
+                        <option value="0">0 - Regular User</option>
+                        <option value="1">1 - Moderator</option>
+                        <option value="2">2 - Administrator</option>
+                    </select>
+                </div>
+                {#if formError}
+                    <div class="text-red-600 text-sm">
+                        {formError}
+                    </div>
+                {/if}
+            </form>
+        </CardContent>
+        <CardFooter class="flex justify-end">
+            <Button onclick={handleSubmit} class="w-full">
+                Add User
+            </Button>
+        </CardFooter>
+    </Card>
 </div>
-
-<style>
-    .card {
-        border-radius: 10px;
-    }
-
-    .card-header {
-        font-size: 1.5rem;
-        font-weight: bold;
-    }
-
-    .btn-primary {
-        background-color: #007bff;
-        border: none;
-    }
-
-    .btn-primary:hover {
-        background-color: #0056b3;
-    }
-</style>

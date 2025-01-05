@@ -1,5 +1,5 @@
 <script>
-    import '$lib/crf-styling.css';
+  import '$lib/crf-styling.css';
 </script>
 
 <div class='row mb-5 outer'>
