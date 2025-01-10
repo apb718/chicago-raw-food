@@ -1,28 +1,26 @@
-chicago-raw-food-app/node_modules
 node_modules
 
 # Output
-chicago-raw-food-app/.output
-chicago-raw-food-app/.vercel
-chicago-raw-food-app/.svelte-kit
-chicago-raw-food-app/build
-chicago-raw-food-app/dist
+.output
+.vercel
+.svelte-kit
+build
+dist
 
 # OS
-chicago-raw-food-app/.DS_Store
-chicago-raw-food-app/Thumbs.db
+.DS_Store
+Thumbs.db
 
 # Env
-chicago-raw-food-app/.env
-chicago-raw-food-app/.env.*
-!chicago-raw-food-app/.env.example
-!chicago-raw-food-app/.env.test
+.env
+.env.*
+!.env.example
+!.env.test
 
 # Vite
-chicago-raw-food-app/.vite.config.js.timestamp-*
-chicago-raw-food-app/.vite.config.ts.timestamp-*
+.vite.config.js.timestamp-*
+.vite.config.ts.timestamp-*
 
 
 # Logs
-chicago-raw-food-app/logs
-.vercel
+logs

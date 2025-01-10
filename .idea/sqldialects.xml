@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="SqlDialectMappings">
-    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/73d4adcd-2c88-49cf-938f-1c027e4c3f0a/console.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/chicago-raw-food-app/src/routes/(private)/+layout.server.ts" dialect="GenericSQL" />
-    <file url="PROJECT" dialect="MySQL" />
-  </component>
-</project>
