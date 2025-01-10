@@ -1,6 +1,5 @@
 
 <script>
-  import {browser} from '$app/environment'; // Detect if running in the browser
   import Navbar from '$lib/components/chicago-raw/navbar/navbar.svelte';
   import Footer from '$lib/components/chicago-raw/footer/footer.svelte';
 

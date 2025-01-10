@@ -1,10 +1,14 @@
 <script lang="ts">
   import { browser } from '$app/environment';
-  import IconMdiAccount from "~icons/mdi/account.svelte"
-  import IconCart from "~icons/mdi/cart.svelte"
+  import IconMdiAccount from "~icons/mdi/account.svelte";
+  import IconCart from "~icons/mdi/cart.svelte";
+  import CartModal from "$lib/components/chicago-raw/modal/cartmodal.svelte";
+
 
   let isNavOpen = false;       // Controls mobile nav toggle
   let isDropdownOpen = false;  // Controls "menu" dropdown
+
+  let cartOpen = $state(false); // Controls cart modal visibility
 
   function toggleNav() {
     isNavOpen = !isNavOpen;
@@ -14,6 +18,10 @@
     isDropdownOpen = !isDropdownOpen;
   }
 
+  function toggleCart() {
+    cartOpen = !cartOpen;
+  }
+
   // Close the dropdown when clicking anywhere else on the page.
   function handleClickOutside(event: MouseEvent) {
     if (!(event.target as HTMLElement).closest('#menuDropdownContainer')) {
@@ -21,11 +29,14 @@
     }
   }
 
-  // Listen for clicks outside the dropdown in browser
+  // Listen for clicks outside the dropdown in the browser
   if (browser) {
     document.addEventListener('click', handleClickOutside);
   }
 </script>
+
+
+<CartModal bind:open={cartOpen} />
 
 <!-- NAV WRAPPER -->
 <nav class="bg-white border-b py-1">
@@ -42,7 +53,7 @@
     <!-- Mobile Toggle Button -->
     <button
       class="lg:hidden p-2 text-gray-700"
-      on:click={toggleNav}
+      onclick={toggleNav}
       aria-label="Toggle Navigation"
     >
       <!-- Simple Hamburger Icon (replace as desired) -->
@@ -64,7 +75,7 @@
         ${isNavOpen ? 'flex' : 'hidden'}`
       }
     >
-      <!-- 
+      <!--
         Use 'justify-end' to push items to the right,
         'ml-auto' to separate them from the logo.
         Decrease space-x-4 to space-x-2 for closer spacing on large screens.
@@ -88,7 +99,7 @@
           <!-- Dropdown Trigger -->
           <button
             class="inline-flex items-center justify-between w-full px-2 py-2 text-lowercase hover:text-raw-pink lg:inline-block"
-            on:click={toggleDropdown}
+            onclick={toggleDropdown}
             aria-haspopup="true"
             aria-expanded={isDropdownOpen}
           >
@@ -277,19 +288,17 @@
 
         <!-- Cart -->
         <li>
-          <a 
-            href="/cart" 
-            class="inline-flex items-center px-2 py-2 text-lowercase hover:text-raw-pink"
-          >
-            <!-- Optionally constrain the icon size -->
+          <button onclick={toggleCart}
+                  class="inline-flex items-center px-2 py-2 text-lowercase hover:text-raw-pink">
             <IconCart class="w-5 h-5" />
-          </a>
+          </button>
+
         </li>
 
         <!-- Admin -->
         <li>
-          <a 
-            href="/admin" 
+          <a
+            href="/admin"
             class="inline-flex items-center px-2 py-2 text-lowercase hover:text-raw-pink"
           >
             <IconMdiAccount class="w-5 h-5" />
