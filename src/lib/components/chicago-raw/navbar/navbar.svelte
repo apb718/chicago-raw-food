@@ -5,6 +5,7 @@
   import CartModal from "$lib/components/chicago-raw/modal/cartmodal.svelte";
 
 
+
   let isNavOpen = false;       // Controls mobile nav toggle
   let isDropdownOpen = false;  // Controls "menu" dropdown
 
