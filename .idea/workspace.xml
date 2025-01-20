@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="adc549b5-6643-47e6-981b-f90d1fd65c57" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/crf-styling.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/crf-styling.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/about/OurStory.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/about/OurStory.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +39,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;apb718&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/apb718/chicago-raw-food&quot;,
+    &quot;accountId&quot;: &quot;83aa195b-d28f-45c3-a458-9e25e65b109d&quot;
+  }
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -59,7 +70,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "tailwind-shadcn-convert",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/apb71/WebstormProjects/chicago-raw-food/chicago-raw-food-app/static/images/Shop",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -68,7 +79,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "configurable.tailwindcss",
-    "ts.external.directory.path": "C:\\Users\\apb71\\WebstormProjects\\chicago-raw-food\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "/Users/alecbyrd/Documents/Projects/chicago-raw-food/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -129,6 +140,8 @@
       <workItem from="1736264723604" duration="43000" />
       <workItem from="1736517044884" duration="777000" />
       <workItem from="1736517876458" duration="2142000" />
+      <workItem from="1737229727412" duration="1073000" />
+      <workItem from="1737392580814" duration="329000" />
     </task>
     <servers />
   </component>
