@@ -3,7 +3,7 @@
     <div class="hidden xl:block xl:col-span-3"></div>
 
     <!-- Main Content -->
-    <div class="xl:col-span-6 space-y-8">
+    <div class="px-16 xl:px-0 xl:col-span-6 space-y-8">
         <!-- What is Raw Section -->
         <div class="grid grid-cols-1 xl:grid-cols-12 gap-4">
             <div class="xl:col-span-4">
