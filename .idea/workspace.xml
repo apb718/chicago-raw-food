@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="adc549b5-6643-47e6-981b-f90d1fd65c57" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/about/OurStory.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/about/OurStory.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/chicago-raw/navbar/navbar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/chicago-raw/navbar/navbar.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +141,7 @@
       <workItem from="1736517044884" duration="777000" />
       <workItem from="1736517876458" duration="2142000" />
       <workItem from="1737229727412" duration="1073000" />
-      <workItem from="1737392580814" duration="329000" />
+      <workItem from="1737392580814" duration="737000" />
     </task>
     <servers />
   </component>
