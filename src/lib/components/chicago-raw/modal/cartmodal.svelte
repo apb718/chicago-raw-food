@@ -35,7 +35,7 @@
 >
     <button
             class="absolute top-4 right-4 text-gray-600 hover:text-gray-800"
-            on:click={closeModal}
+            onclick={closeModal}
     >
         ✖️
     </button>
