@@ -16,7 +16,7 @@
     class:hidden={!isOpen}
     aria-hidden={!isOpen}
 >
-    <div class="fixed inset-0 bg-black/50" on:click={close}></div>
+    <div class="fixed inset-0 bg-black/50" onclick={close}></div>
     <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg z-50">
         <!-- Modal Header -->
         <div class="flex items-center justify-between mb-4">
@@ -38,13 +38,13 @@
         <div class="flex justify-end space-x-2">
             <button
                 class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300"
-                on:click={close}
+                onclick={close}
             >
                 Cancel
             </button>
             <button
                 class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                on:click={close}
+                onclick={close}
             >
                 Confirm
             </button>

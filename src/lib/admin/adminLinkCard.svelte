@@ -16,7 +16,7 @@
     {#if description}
         <p>{description}</p>
     {/if}
-    <button on:click={pageAction}>{actionText}</button>
+    <button onclick={pageAction}>{actionText}</button>
 </div>
 
 <style>

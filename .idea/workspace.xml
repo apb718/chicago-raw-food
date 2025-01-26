@@ -56,12 +56,15 @@
         <option value="ShopBanner" />
         <option value="Banner" />
         <option value="+layout.svelte" />
-        <option value="TypeScript File" />
         <option value="productTypes" />
         <option value="ShopProduct" />
         <option value="OrderModal" />
         <option value="DefaultProduct" />
-        <option value="strings" />
+        <option value="CartModal.svelte" />
+        <option value="TypeScript File" />
+        <option value="cart.js" />
+        <option value="cartCard.svelte" />
+
       </list>
     </option>
   </component>
@@ -84,7 +87,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -94,6 +97,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "17-setup-cart-functionality",
+    "last_opened_file_path": "C:/Users/apb71/WebstormProjects/chicago-raw-food/chicago-raw-food-app/static/images/Shop",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "editing.templates",
+    "ts.external.directory.path": "/Users/alecbyrd/Documents/Projects/chicago-raw-food/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -169,6 +188,8 @@
       <workItem from="1736264723604" duration="43000" />
       <workItem from="1736517044884" duration="777000" />
       <workItem from="1736517876458" duration="2142000" />
+      <workItem from="1736751628229" duration="22000" />
+      <workItem from="1736758505193" duration="6015000" />
       <workItem from="1737229727412" duration="1073000" />
       <workItem from="1737392580814" duration="1749000" />
       <workItem from="1737677953790" duration="3000" />
@@ -186,6 +207,11 @@
           <url>file://$PROJECT_DIR$/src/routes/(private)/admin/+layout.svelte</url>
           <line>14</line>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/lib/components/chicago-raw/modal/cartmodal.svelte</url>
+          <line>37</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
