@@ -4,7 +4,7 @@
     import { onMount } from "svelte";
     import * as Dialog from "$lib/components/ui/dialog";
     import ShopProduct from "$lib/shop/ShopProduct.svelte";
-    import { capitalizeWords } from "$lib/CapitalizeWords.js";
+    import { capitalizeWords } from "$lib/util/text/CapitalizeWords.js";
     import type { Product, CartProduct } from "$lib/types.js";
     import { DEHYDRATED_ID } from "$lib/products/productTypes.js";
 
