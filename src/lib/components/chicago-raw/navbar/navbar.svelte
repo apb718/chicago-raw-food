@@ -58,16 +58,9 @@
       aria-label="Toggle Navigation"
     >
       <!-- Simple Hamburger Icon (replace as desired) -->
-      <svg
-        class="w-6 h-6 fill-current"
-        viewBox="0 0 24 24"
-      >
-        <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d="M4 6h16M4 12h16M4 18h16"
-        />
-      </svg>
+     <p>-</p>
+      <p>-</p>
+      <p>-</p>
     </button>
 
     <!-- Navbar Links (Desktop + Mobile) -->
@@ -107,7 +100,7 @@
             menu
             <!-- Dropdown caret (optional) -->
             <svg
-              class="w-4 h-4 ml-1 fill-current"
+              class="w-4 h-4 ml-1 fill-current "
               viewBox="0 0 20 20"
             >
               <path d="M5.516 7.548a.625.625 0 0 1 .884 0L10 11.15l3.6-3.602a.625.625 0 0 1 .884.884l-4.04 4.04a.625.625 0 0 1-.884 0l-4.04-4.04a.625.625 0 0 1 0-.884z" />

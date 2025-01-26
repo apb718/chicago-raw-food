@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '$lib/crf-styling.css'
+  import '$lib/util/text/crf-styling.css'
   import FoodCarousel from '$lib/home/Carousel.svelte'
   import OrderApps from "$lib/home/OrderApps.svelte";
   import BulletRow from "$lib/home/BulletRow.svelte";

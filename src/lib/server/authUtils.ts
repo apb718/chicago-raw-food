@@ -1,6 +1,6 @@
 import { json } from '@sveltejs/kit';
 import { pool } from '$lib/db/mysql.js';
-import { getCookie } from '$lib/AuthCookie.js';
+import { getCookie } from '$lib/util/auth/AuthCookie.js';
 import { log } from '$lib/server/logUtils.js'; // Import the logger
 import type { RequestEvent } from '@sveltejs/kit';
 import type { RowDataPacket } from 'mysql2';

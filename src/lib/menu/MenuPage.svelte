@@ -1,8 +1,8 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import { slide } from "svelte/transition";
-    import { capitalizeWords } from "$lib/CapitalizeWords.js";
-    import { removeTrailingZeroes } from "$lib/removeTrailingZeroes.js";
+    import { capitalizeWords } from "$lib/util/text/CapitalizeWords.js";
+    import { removeTrailingZeroes } from "$lib/util/text/removeTrailingZeroes.js";
     import { Card, CardHeader, CardTitle, CardContent } from "$lib/components/ui/card";
     import type Product from "$lib/types.js";
 

@@ -6,11 +6,35 @@
   <component name="ChangeListManager">
     <list default="true" id="adc549b5-6643-47e6-981b-f90d1fd65c57" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postcss.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/postcss.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/admin/adminLinkCard.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/admin/adminLinkCard.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/chicago-raw/card/cartCard.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/chicago-raw/card/cartCard.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/chicago-raw/modal/cartmodal.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/chicago-raw/modal/cartmodal.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/chicago-raw/modal/modal.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/chicago-raw/modal/modal.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/AuthCookie.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/util/auth/AuthCookie.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/CapitalizeWords.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/util/text/CapitalizeWords.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/ui/button/button.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/ui/button/button.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/ui/card/card-content.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/ui/card/card-content.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/ui/card/card-description.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/ui/card/card-description.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/ui/card/card-footer.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/ui/card/card-footer.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/ui/card/card-header.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/ui/card/card-header.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/ui/card/card-title.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/ui/card/card-title.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/ui/card/card.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/ui/card/card.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/ui/dialog/dialog-content.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/ui/dialog/dialog-content.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/ui/dialog/dialog-description.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/ui/dialog/dialog-description.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/ui/dialog/dialog-footer.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/ui/dialog/dialog-footer.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/ui/dialog/dialog-header.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/ui/dialog/dialog-header.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/ui/dialog/dialog-overlay.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/ui/dialog/dialog-overlay.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/ui/dialog/dialog-title.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/ui/dialog/dialog-title.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/ui/input/input.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/ui/input/input.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/ui/select/select-content.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/ui/select/select-content.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/ui/select/select-item.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/ui/select/select-item.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/ui/select/select-label.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/ui/select/select-label.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/ui/select/select-separator.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/ui/select/select-separator.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/ui/select/select-trigger.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/ui/select/select-trigger.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/crf-styling.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/util/text/crf-styling.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/menu/MenuPage.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/menu/MenuPage.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/removeTrailingZeroes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/util/text/removeTrailingZeroes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/server/authUtils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/server/authUtils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/util/shadcn/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/+error.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+error.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+page.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/shop/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/shop/+page.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,12 +64,25 @@
         <option value="TypeScript File" />
         <option value="cart.js" />
         <option value="cartCard.svelte" />
+
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;apb718&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/apb718/chicago-raw-food&quot;,
+    &quot;accountId&quot;: &quot;83aa195b-d28f-45c3-a458-9e25e65b109d&quot;
+  }
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -76,19 +113,35 @@
     "settings.editor.selected.configurable": "editing.templates",
     "ts.external.directory.path": "/Users/alecbyrd/Documents/Projects/chicago-raw-food/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/apb71/WebstormProjects/chicago-raw-food/chicago-raw-food-app/static/images/Shop&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.tailwindcss&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/alecbyrd/Documents/Projects/chicago-raw-food/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\apb71\WebstormProjects\chicago-raw-food\chicago-raw-food-app\static\images\Shop" />
       <recent name="C:\Users\apb71\WebstormProjects\chicago-raw-food\chicago-raw-food-app\static\images\dehydrated-foods" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/lib/util/text" />
+      <recent name="$PROJECT_DIR$/src/lib/util/shadcn" />
+      <recent name="$PROJECT_DIR$/src/lib/util/auth" />
       <recent name="C:\Users\apb71\WebstormProjects\chicago-raw-food" />
       <recent name="C:\Users\apb71\WebstormProjects\chicago-raw-food\chicago-raw-food-app" />
-      <recent name="C:\Users\apb71\WebstormProjects\chicago-raw-food\chicago-raw-food-app\src\lib\components\chicago-raw\footer" />
-      <recent name="C:\Users\apb71\WebstormProjects\chicago-raw-food\chicago-raw-food-app\src\lib\components\chicago-raw\navbar" />
-      <recent name="C:\Users\apb71\WebstormProjects\chicago-raw-food\chicago-raw-food-app\static\images\dehydrated-foods" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -137,6 +190,10 @@
       <workItem from="1736517876458" duration="2142000" />
       <workItem from="1736751628229" duration="22000" />
       <workItem from="1736758505193" duration="6015000" />
+      <workItem from="1737229727412" duration="1073000" />
+      <workItem from="1737392580814" duration="1749000" />
+      <workItem from="1737677953790" duration="3000" />
+      <workItem from="1737911629086" duration="859000" />
     </task>
     <servers />
   </component>
